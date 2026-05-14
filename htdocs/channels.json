@@ -150,6 +150,26 @@
     "bitrate": 256
   },
   {
+    "name": "FI HEL Yle Radio 1",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027672/in-YleRadio1/256/variant.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL YleX",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027674/in-YleX/256/variant.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Yle Klassinen",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027676/in-YleKlassinen/256/variant.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Yle Vega",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027679/in-YleVega/256/variant.m3u8",
+    "bitrate": 256
+  },
+  {
     "name": "FI HEL Järviradio",
     "url": "https://jarviradio.radiotaajuus.fi:9000/jr",
     "bitrate": 128
@@ -215,16 +235,6 @@
     "bitrate": 192
   },
   {
-    "name": "FI HEL Yle Radio 1",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027672/in-YleRadio1/256/variant.m3u8",
-    "bitrate": 256
-  },
-  {
-    "name": "FI HEL YleX",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027674/in-YleX/256/variant.m3u8",
-    "bitrate": 256
-  },
-  {
     "name": "FI HEL RadioSE",
     "url": "https://wr2.downtime.fi/kaakko.aac",
     "bitrate": 128
@@ -278,11 +288,6 @@
     "name": "FI HEL Aito Iskelmä Finnhits",
     "url": "https://ext-stream-pl06.nm-elemental.nelonenmedia.fi/HEF/master.m3u8",
     "bitrate": 128
-  },
-  {
-    "name": "FI HEL Yle Klassinen",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027676/in-YleKlassinen/256/variant.m3u8",
-    "bitrate": 256
   },
   {
     "name": "FI HEL Radio Nova",
