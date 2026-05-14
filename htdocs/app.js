@@ -14,6 +14,25 @@
   let channels = [];
   let currentIndex = 0;
   let userWantsPlay = false;
+  // Debounce for spurious "waiting"/"stalled" events that fire during normal
+  // HLS segment fetching even though audible playback is uninterrupted.
+  let pendingLoadingTimer = null;
+  const LOADING_DEBOUNCE_MS = 2000;
+
+  function clearPendingLoading() {
+    if (pendingLoadingTimer != null) {
+      clearTimeout(pendingLoadingTimer);
+      pendingLoadingTimer = null;
+    }
+  }
+
+  function scheduleLoading() {
+    if (pendingLoadingTimer != null) return; // already armed; don't reset
+    pendingLoadingTimer = setTimeout(() => {
+      pendingLoadingTimer = null;
+      if (userWantsPlay && audio.readyState < 3) setStatus("loading");
+    }, LOADING_DEBOUNCE_MS);
+  }
 
   const STATUS = {
     paused:   { text: "◼ PAUSED",      state: "paused" },
@@ -92,6 +111,7 @@
     renderChannel();
 
     const url = channels[currentIndex].url;
+    clearPendingLoading();
     audio.pause();
     audio.src = url;
     // load() forces the browser to apply the new src and discard buffer
@@ -155,16 +175,23 @@
       }
     });
 
-    audio.addEventListener("playing", () => setStatus("playing"));
+    audio.addEventListener("playing", () => {
+      clearPendingLoading();
+      setStatus("playing");
+    });
     audio.addEventListener("waiting", () => {
-      if (userWantsPlay) setStatus("loading");
+      if (userWantsPlay) scheduleLoading();
+    });
+    audio.addEventListener("stalled", () => {
+      if (userWantsPlay) scheduleLoading();
     });
     audio.addEventListener("pause", () => {
+      clearPendingLoading();
       if (!userWantsPlay) setStatus("paused");
     });
-    audio.addEventListener("error", () => setStatus("error"));
-    audio.addEventListener("stalled", () => {
-      if (userWantsPlay) setStatus("loading");
+    audio.addEventListener("error", () => {
+      clearPendingLoading();
+      setStatus("error");
     });
   }
 
