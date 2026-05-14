@@ -1,0 +1,292 @@
+[
+  {
+    "name": "EE XFM",
+    "url": "https://stream1.rcast.net/73328",
+    "bitrate": 224
+  },
+  {
+    "name": "EE BIGfm",
+    "url": "https://sc2.flamebox.org/bigfm-hd",
+    "bitrate": 320
+  },
+  {
+    "name": "EE Duo Radio",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/radioduo.aac",
+    "bitrate": 192
+  },
+  {
+    "name": "EE Duo Christmas",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/christmas.aac",
+    "bitrate": 192
+  },
+  {
+    "name": "EE Duo Country",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/dc_duocountry.aac",
+    "bitrate": 192
+  },
+  {
+    "name": "EE Duo Gold",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/kuld.aac",
+    "bitrate": 192
+  },
+  {
+    "name": "EE Duo Hitmix",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/DHM_hitmix.aac",
+    "bitrate": 128
+  },
+  {
+    "name": "EE Duo Party",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/duodance.aac",
+    "bitrate": 192
+  },
+  {
+    "name": "EE Duo Softmix",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/DS_softmix.aac",
+    "bitrate": 192
+  },
+  {
+    "name": "EE Elmar",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/elmar.aac",
+    "bitrate": 192
+  },
+  {
+    "name": "EE Elmari Kuld",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/elmarikuld.aac",
+    "bitrate": 160
+  },
+  {
+    "name": "EE Elmari Tantsuõhtu",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/elmaritantsuohtu.aac",
+    "bitrate": 192
+  },
+  {
+    "name": "EE Raadio Kidzone",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/kidzone.aac",
+    "bitrate": 160
+  },
+  {
+    "name": "EE Kuku Raadio",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/kuku.aac",
+    "bitrate": 192
+  },
+  {
+    "name": "EE MyHits",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/myhits.aac",
+    "bitrate": 192
+  },
+  {
+    "name": "EE MyHits Dance",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/md_mhdance.aac",
+    "bitrate": 160
+  },
+  {
+    "name": "EE MyHits Rock",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/MHR_myhitsrock.aac",
+    "bitrate": 128
+  },
+  {
+    "name": "EE Power Hit Radio",
+    "url": "https://ice.leviracloud.eu/phr128-aac",
+    "bitrate": 128
+  },
+  {
+    "name": "EE R2 Altpop",
+    "url": "https://icecast.err.ee/r2alternatiiv.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "EE Raadio 4",
+    "url": "https://icecast.err.ee/raadio4.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "EE Echo",
+    "url": "https://edifchqufozvbegw.global.ssl.fastly.net/audio_echofm/stream",
+    "bitrate": 64
+  },
+  {
+    "name": "EE Raadio Tallinn",
+    "url": "https://icecast.err.ee/raadiotallinn.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "EE Radio Nostalgia",
+    "url": "https://c16.radioboss.fm:8327/stream",
+    "bitrate": 320
+  },
+  {
+    "name": "EE Star FM",
+    "url": "https://ice.leviracloud.eu/star128-aac",
+    "bitrate": 128
+  },
+  {
+    "name": "EE Star FM Eesti",
+    "url": "https://ice.leviracloud.eu/starFMEesti128-aac",
+    "bitrate": 128
+  },
+  {
+    "name": "EE Vikerraadio",
+    "url": "https://icecast.err.ee/vikerraadio.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "EE Äripäeva",
+    "url": "https://ice.leviracloud.eu/aripaev128-mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Radio Helsinki",
+    "url": "https://stream.radiohelsinki.fi/stream",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Yle Radio Suomi Helsinki",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027675/in-YleRS/256/variant.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Yle X3M",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027678/in-YleX3M/256/variant.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Järviradio",
+    "url": "https://jarviradio.radiotaajuus.fi:9000/jr",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Radio Dei",
+    "url": "https://stream.dei.fi/radioplayer/helsinki",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL HitMix",
+    "url": "https://aud-stream-hitmix.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Easy Hits",
+    "url": "https://aud-stream-easyhits.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Groove FM",
+    "url": "https://aud-stream-groove.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Radio Suomipop",
+    "url": "https://aud-stream-suomipop.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Radio Rock",
+    "url": "https://aud-stream-radiorock.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Loop",
+    "url": "https://aud-stream-loop.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Classic Hits",
+    "url": "https://aud-stream-classichits.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Radio Nova",
+    "url": "https://streaming.radioplay.fi/radionova/radionova_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL NRJ",
+    "url": "https://streaming.radioplay.fi/nrj/nrj_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL SuomiRäp",
+    "url": "https://streaming.radioplay.fi/suomirap/suomirap_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL TOP51",
+    "url": "https://streaming.radioplay.fi/top51/top51_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Iskelmä",
+    "url": "https://streaming.radioplay.fi/iskelma/iskelma_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Radio Pooki",
+    "url": "https://streaming.radioplay.fi/radiopooki/radiopooki_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL SuomiRock",
+    "url": "https://streaming.radioplay.fi/suomirock/suomirock_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Radio Nostalgia",
+    "url": "https://streaming.radioplay.fi/nostalgia/nostalgia_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Kasari",
+    "url": "https://streaming.radioplay.fi/kasari/kasari_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Basso",
+    "url": "https://streaming.radioplay.fi/basso/bassoradio_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Tekoälyradio",
+    "url": "https://streaming.radioplay.fi/tekoalyradio/tekoalyradio_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Radio City",
+    "url": "https://streaming.radioplay.fi/radiocity/radiocity_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Radio Classic",
+    "url": "https://streaming.radioplay.fi/classic/classic_128.mp3",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Aito Iskelmä",
+    "url": "https://aud-stream-aitoiskelma.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL Roll FM",
+    "url": "https://rollfm.online/",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Yle Radio 1",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027672/in-YleRadio1/256/variant.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL YleX",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027674/in-YleX/256/variant.m3u8",
+    "bitrate": 256
+  },
+  {
+    "name": "FI HEL RadioSE",
+    "url": "https://wr2.downtime.fi/kaakko.aac",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Yle Klassinen",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027676/in-YleKlassinen/256/variant.m3u8",
+    "bitrate": 256
+  }
+]

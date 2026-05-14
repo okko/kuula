@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#0a001a" />
+    <title>RAADIO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="stage">
+      <section
+        id="display"
+        class="display"
+        role="button"
+        tabindex="0"
+        aria-label="Toggle play and pause"
+      >
+        <div id="channel-name" class="channel-name">— — —</div>
+        <div id="status" class="status">◼ PAUSED</div>
+      </section>
+
+      <nav class="controls" aria-label="Channel controls">
+        <button id="prev" class="arrow" type="button" aria-label="Previous channel">
+          <span aria-hidden="true">◀</span>
+        </button>
+        <button id="next" class="arrow" type="button" aria-label="Next channel">
+          <span aria-hidden="true">▶</span>
+        </button>
+      </nav>
+    </main>
+
+    <audio id="audio" preload="none"></audio>
+
+    <script src="app.js"></script>
+  </body>
+</html>

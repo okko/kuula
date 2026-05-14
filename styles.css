@@ -1,0 +1,210 @@
+:root {
+  --bg: #0a001a;
+  --cyan: #00f0ff;
+  --magenta: #ff00aa;
+  --magenta-dim: rgba(255, 0, 170, 0.35);
+  --cyan-dim: rgba(0, 240, 255, 0.35);
+  --panel: rgba(255, 0, 170, 0.06);
+  --panel-border: rgba(0, 240, 255, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--cyan);
+  font-family: "VT323", "Courier New", monospace;
+  -webkit-font-smoothing: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+}
+
+/* Sunset gradient behind everything */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 50% at 50% 100%,
+      rgba(255, 0, 170, 0.35),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 50% 100%,
+      rgba(0, 240, 255, 0.18),
+      transparent 70%
+    );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Scanlines overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    rgba(0, 0, 0, 0.28) 2px,
+    rgba(0, 0, 0, 0.28) 3px
+  );
+  pointer-events: none;
+  z-index: 100;
+  mix-blend-mode: multiply;
+}
+
+.stage {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 6vh, 64px);
+  padding:
+    calc(env(safe-area-inset-top) + 24px)
+    calc(env(safe-area-inset-right) + 24px)
+    calc(env(safe-area-inset-bottom) + 24px)
+    calc(env(safe-area-inset-left) + 24px);
+}
+
+.display {
+  width: min(560px, 92vw);
+  min-height: clamp(160px, 28vh, 260px);
+  border: 2px solid var(--panel-border);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow:
+    0 0 16px var(--magenta-dim),
+    inset 0 0 32px rgba(255, 0, 170, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.display:focus-visible {
+  border-color: var(--magenta);
+  box-shadow:
+    0 0 24px var(--magenta),
+    inset 0 0 32px rgba(255, 0, 170, 0.16);
+}
+
+.channel-name {
+  font-size: clamp(2.4rem, 9vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: var(--cyan);
+  text-shadow:
+    0 0 6px var(--cyan),
+    0 0 18px var(--magenta),
+    0 0 36px var(--magenta);
+  word-break: break-word;
+}
+
+.status {
+  font-size: clamp(1.1rem, 3.4vw, 1.6rem);
+  letter-spacing: 0.3em;
+  color: var(--magenta);
+  text-shadow: 0 0 8px var(--magenta);
+  text-transform: uppercase;
+}
+
+.status[data-state="playing"] {
+  color: var(--cyan);
+  text-shadow: 0 0 8px var(--cyan), 0 0 20px var(--cyan);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.status[data-state="error"] {
+  color: #ff5555;
+  text-shadow: 0 0 8px #ff5555, 0 0 20px #ff0033;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+.controls {
+  display: flex;
+  gap: clamp(32px, 10vw, 96px);
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow {
+  font-family: inherit;
+  font-size: clamp(2.8rem, 9vw, 4.4rem);
+  line-height: 1;
+  width: clamp(96px, 22vw, 140px);
+  height: clamp(96px, 22vw, 140px);
+  border-radius: 12px;
+  border: 2px solid var(--cyan);
+  background: transparent;
+  color: var(--cyan);
+  text-shadow: 0 0 8px var(--cyan);
+  box-shadow:
+    0 0 12px var(--cyan-dim),
+    inset 0 0 12px var(--cyan-dim);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 80ms ease, box-shadow 120ms ease, color 120ms ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.arrow:hover,
+.arrow:focus-visible {
+  color: var(--magenta);
+  border-color: var(--magenta);
+  text-shadow: 0 0 10px var(--magenta), 0 0 24px var(--magenta);
+  box-shadow:
+    0 0 18px var(--magenta-dim),
+    inset 0 0 18px var(--magenta-dim);
+  outline: none;
+}
+
+.arrow:active {
+  transform: scale(0.94);
+  color: var(--magenta);
+  border-color: var(--magenta);
+  box-shadow:
+    0 0 26px var(--magenta),
+    inset 0 0 26px var(--magenta-dim);
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .stage {
+    flex-direction: row;
+    gap: clamp(24px, 4vw, 64px);
+  }
+  .display {
+    flex: 1 1 auto;
+    width: auto;
+    min-height: auto;
+    height: min(70dvh, 320px);
+  }
+}
