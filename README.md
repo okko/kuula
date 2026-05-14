@@ -1,6 +1,6 @@
 # Kuula Web Radio Player
 
-A minimal-UI internet radio player for private, non-commercial personal use.
+A minimalist Internet radio player.
 Two arrow buttons cycle channels; tap the display to play/pause. Built as a
 static site — no backend, no build step.
 
