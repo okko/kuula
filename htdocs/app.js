@@ -1,5 +1,5 @@
 (() => {
-  const STORAGE_KEY = "raadio.channelIndex";
+  const STORAGE_KEY = "kuula.channelIndex";
 
   const audio = document.getElementById("audio");
   const display = document.getElementById("display");

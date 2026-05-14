@@ -1,4 +1,4 @@
-# raadio
+# Kuula Web Radio Player
 
 A minimal-UI internet radio player for private, non-commercial personal use.
 Two arrow buttons cycle channels; tap the display to play/pause. Built as a
