@@ -5,6 +5,9 @@
   const display = document.getElementById("display");
   const channelNameEl = document.getElementById("channel-name");
   const statusEl = document.getElementById("status");
+  const regionEl = document.getElementById("region");
+  const bitrateEl = document.getElementById("bitrate");
+  const indicatorsEl = document.getElementById("indicators");
   const prevBtn = document.getElementById("prev");
   const nextBtn = document.getElementById("next");
 
@@ -22,23 +25,45 @@
 
   function setStatus(kind) {
     const s = STATUS[kind];
-    let text = s.text;
-    if (kind === "playing") {
-      const ch = channels[currentIndex];
-      const suffix = ch && ch.bitrate ? String(ch.bitrate) : null;
-      if (suffix) text += " / " + suffix;
-    }
-    statusEl.textContent = text;
+    statusEl.textContent = s.text;
     statusEl.dataset.state = s.state;
+  }
+
+  function parseRegion(name) {
+    const m = /^(EE|FI [A-Z]+) (.+)$/.exec(name);
+    return m ? { region: m[1], channel: m[2] }
+             : { region: "",   channel: name };
+  }
+
+  function renderIndicators() {
+    indicatorsEl.textContent = "";
+    let prevRegion = null;
+    for (let i = 0; i < channels.length; i++) {
+      const dot = document.createElement("span");
+      dot.className = "channel-indicator";
+      if (i === currentIndex) dot.classList.add("active");
+      const { region } = parseRegion(channels[i].name);
+      if (region !== prevRegion) dot.dataset.groupStart = "true";
+      prevRegion = region;
+      indicatorsEl.appendChild(dot);
+    }
   }
 
   function renderChannel() {
     if (!channels.length) {
       channelNameEl.textContent = "— — —";
+      regionEl.textContent = "";
+      bitrateEl.textContent = "";
+      indicatorsEl.textContent = "";
       setStatus("empty");
       return;
     }
-    channelNameEl.textContent = channels[currentIndex].name;
+    const ch = channels[currentIndex];
+    const { region, channel } = parseRegion(ch.name);
+    regionEl.textContent = region;
+    bitrateEl.textContent = ch.bitrate != null ? String(ch.bitrate) : "";
+    channelNameEl.textContent = channel;
+    renderIndicators();
   }
 
   function persistIndex() {
