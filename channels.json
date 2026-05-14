@@ -195,6 +195,11 @@
     "bitrate": 256
   },
   {
+    "name": "FI HEL POPfm",
+    "url": "https://stream.rcs.revma.com/hr92cvyzz2nwv",
+    "bitrate": 192
+  },
+  {
     "name": "FI HEL Radio Nova",
     "url": "https://streaming.radioplay.fi/radionova/radionova_128.mp3",
     "bitrate": 128
@@ -270,6 +275,11 @@
     "bitrate": 128
   },
   {
+    "name": "FI HEL Kaupunkiradio",
+    "url": "https://kaupunkiradio.radiotaajuus.fi:9013/radio",
+    "bitrate": 192
+  },
+  {
     "name": "FI HEL Yle Radio 1",
     "url": "https://yleradiolive.akamaized.net/hls/live/2027672/in-YleRadio1/256/variant.m3u8",
     "bitrate": 256
@@ -282,6 +292,56 @@
   {
     "name": "FI HEL RadioSE",
     "url": "https://wr2.downtime.fi/kaakko.aac",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Radio Rock Lite",
+    "url": "https://ext-stream-pl02.nm-elemental.nelonenmedia.fi/HEI/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL HitMix 80's",
+    "url": "https://ext-stream-pl09.nm-elemental.nelonenmedia.fi/HEH/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Groove FM Lounge",
+    "url": "https://ext-stream-pl08.nm-elemental.nelonenmedia.fi/HEG/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Radio Rock Metal",
+    "url": "https://ext-stream-pl03.nm-elemental.nelonenmedia.fi/HEM/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Loop EDM",
+    "url": "https://ext-stream-pl10.nm-elemental.nelonenmedia.fi/HEE/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Radio Rock Classics",
+    "url": "https://ext-stream-pl01.nm-elemental.nelonenmedia.fi/HEC/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Radio Suomipop Top40",
+    "url": "https://ext-stream-pl05.nm-elemental.nelonenmedia.fi/HET/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Radio Suomipop Klassikot",
+    "url": "https://ext-stream-pl04.nm-elemental.nelonenmedia.fi/HEK/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Aito Iskelmä Ulkomaiset Klassikot",
+    "url": "https://ext-stream-pl07.nm-elemental.nelonenmedia.fi/HEU/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "name": "FI HEL Aito Iskelmä Finnhits",
+    "url": "https://ext-stream-pl06.nm-elemental.nelonenmedia.fi/HEF/master.m3u8",
     "bitrate": 128
   },
   {
