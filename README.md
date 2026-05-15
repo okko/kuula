@@ -1,4 +1,4 @@
-# Kuula Web Radio Player
+# Kuula – Web Radio Player
 
 A minimalist Internet radio player.
 Two arrow buttons cycle channels; tap the display to play/pause. Built as a
