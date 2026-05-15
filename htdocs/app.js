@@ -35,17 +35,34 @@
   }
 
   const STATUS = {
-    paused:   { text: "◼ PAUSED",      state: "paused" },
-    loading:  { text: "⋯ TUNING",      state: "loading" },
-    playing:  { text: "▸ NOW PLAYING", state: "playing" },
-    error:    { text: "⚠ OFFLINE",     state: "error" },
-    empty:    { text: "— NO CHANNELS —", state: "error" },
+    paused:   { text: "◼ PAUSED",      state: "paused",  titleLabel: "Paused"  },
+    loading:  { text: "⋯ TUNING",      state: "loading", titleLabel: "Tuning"  },
+    playing:  { text: "▸ NOW PLAYING", state: "playing", titleLabel: null      },
+    error:    { text: "⚠ OFFLINE",     state: "error",   titleLabel: "Offline" },
+    empty:    { text: "— NO CHANNELS —", state: "error", titleLabel: null     },
   };
+
+  const TITLE_BASE = "Kuula";
+  const TITLE_SUFFIX = "Web Radio Player";
+  const DEFAULT_TITLE = `${TITLE_BASE} ${TITLE_SUFFIX}`;
+
+  function updateTitle(kind) {
+    if (!channels.length) {
+      document.title = DEFAULT_TITLE;
+      return;
+    }
+    const s = STATUS[kind];
+    const middle = (kind === "playing" && channels[currentIndex])
+      ? channels[currentIndex].name
+      : (s && s.titleLabel) || "Paused";
+    document.title = `${TITLE_BASE} (${channels.length} channels) - ${middle} - ${TITLE_SUFFIX}`;
+  }
 
   function setStatus(kind) {
     const s = STATUS[kind];
     statusEl.textContent = s.text;
     statusEl.dataset.state = s.state;
+    updateTitle(kind);
   }
 
   function renderIndicators() {
@@ -143,7 +160,9 @@
 
   function step(delta) {
     if (!channels.length) return;
-    tuneTo(currentIndex + delta, { play: userWantsPlay });
+    // Arrow press is a user gesture — start playing even from a paused state.
+    userWantsPlay = true;
+    tuneTo(currentIndex + delta, { play: true });
   }
 
   function wireEvents() {
