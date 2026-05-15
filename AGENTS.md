@@ -152,11 +152,14 @@ Things that look load-bearing and are:
 
 ## Styling (`htdocs/styles.css`)
 
-Synthwave aesthetic. Cyan text (`#00f0ff`) with magenta glow (`#ff00aa`),
-scanlines via `::before` `repeating-linear-gradient`, sunset gradient via
-`::after` radial gradient, VT323 font from Google Fonts (Courier New fallback).
-Use `100dvh` not `100vh` for layout height — iOS Safari's URL bar otherwise
-causes a jump.
+80s hi-fi tuner aesthetic. Cool charcoal matte panel
+(`linear-gradient(180deg, #2a2c30 0%, #1c1d20 60%)`) with a single cyan
+accent (`#00f0ff`); the display, arrow buttons, and active indicator all
+draw from the same `--cyan*` variables. Subtle scanline overlay via body
+`::before` `repeating-linear-gradient` at low opacity. VT323 font from
+Google Fonts (Courier New fallback). Use `100dvh` not `100vh` for layout
+height — iOS Safari's URL bar otherwise causes a jump. No magenta or
+sunset gradient — those were dropped in favour of the matte-grey look.
 
 ## What not to add
 

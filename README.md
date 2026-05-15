@@ -12,7 +12,10 @@ the broadcaster's own web player would make. Please respect each
 broadcaster's terms of service and any geographic or authentication
 restrictions they enforce.
 
-Style: 80s synthwave (neon magenta/cyan on black, scanlines, VT323 font).
+The look: 80s hi-fi tuner — matte charcoal panel with a single cyan accent,
+faint scanline overlay, VT323 pixel font. A row of small position indicators
+across the top of the panel shows how many channels there are and which one
+is selected; region (`EE`, `FI HEL`) and bitrate sit in the info bar below.
 
 ## Layout
 
@@ -59,18 +62,23 @@ Configured in [`htdocs/channels.json`](htdocs/channels.json). Each entry:
 
 ```json
 {
-  "name": "EE XFM",
-  "url":  "https://stream1.rcast.net/73328",
+  "region": "EE",
+  "name":   "XFM",
+  "url":    "https://stream1.rcast.net/73328",
   "bitrate": 224
 }
 ```
 
-- **`name`** — shown on the display. Prefix with a country/region tag
-  (`EE`, `FI HEL`, …) so the list stays scannable.
+- **`region`** — short country/region tag rendered as a cyan label in the
+  info bar (e.g. `EE`, `FI HEL`). Channels sharing the same `region` are
+  visually grouped in the indicator row; list them contiguously in the JSON.
+- **`name`** — station name only, without the region prefix. Shown in the
+  large channel-name slot (clamped to two lines).
 - **`url`** — direct media URL: icecast/shoutcast (`.mp3`, `.aac`), or HLS
   (`.m3u8`). Use HTTPS — iOS Safari and modern Chrome block HTTP audio from
   HTTPS pages as mixed content.
-- **`bitrate`** — integer kilobits/sec. Shown next to "NOW PLAYING".
+- **`bitrate`** — integer kilobits/sec. Shown in the info bar on the right
+  with a " KBPS" suffix.
 
 Before committing a new channel: run `./tools/check-channels.sh` and confirm
 each new entry shows `STATUS=ok`. See [`AGENTS.md`](AGENTS.md) for the full
