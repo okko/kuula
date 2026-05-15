@@ -48,12 +48,6 @@
     statusEl.dataset.state = s.state;
   }
 
-  function parseRegion(name) {
-    const m = /^(EE|FI [A-Z]+) (.+)$/.exec(name);
-    return m ? { region: m[1], channel: m[2] }
-             : { region: "",   channel: name };
-  }
-
   function renderIndicators() {
     indicatorsEl.textContent = "";
     let prevRegion = null;
@@ -61,7 +55,7 @@
       const dot = document.createElement("span");
       dot.className = "channel-indicator";
       if (i === currentIndex) dot.classList.add("active");
-      const { region } = parseRegion(channels[i].name);
+      const region = channels[i].region || "";
       if (region !== prevRegion) dot.dataset.groupStart = "true";
       prevRegion = region;
       indicatorsEl.appendChild(dot);
@@ -78,10 +72,9 @@
       return;
     }
     const ch = channels[currentIndex];
-    const { region, channel } = parseRegion(ch.name);
-    regionEl.textContent = region;
+    regionEl.textContent = ch.region || "";
     bitrateEl.textContent = ch.bitrate != null ? String(ch.bitrate) : "";
-    channelNameEl.textContent = channel;
+    channelNameEl.textContent = ch.name;
     renderIndicators();
   }
 

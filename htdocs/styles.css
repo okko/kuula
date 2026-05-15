@@ -131,7 +131,7 @@ body::before {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-size: clamp(0.95rem, 2.6vw, 1.3rem);
+  font-size: clamp(1.05rem, 2.86vw, 1.43rem);
   letter-spacing: 0.18em;
   color: var(--ink-dim);
   text-transform: uppercase;
@@ -150,7 +150,7 @@ body::before {
 }
 
 .channel-name {
-  font-size: clamp(2.0rem, 7vw, 3.4rem);
+  font-size: clamp(2.2rem, 7.7vw, 3.74rem);
   line-height: 1.05;
   height: calc(2em * 1.05);
   letter-spacing: 0.06em;
@@ -166,7 +166,7 @@ body::before {
 }
 
 .status {
-  font-size: clamp(1.0rem, 3.0vw, 1.4rem);
+  font-size: clamp(1.1rem, 3.3vw, 1.54rem);
   letter-spacing: 0.3em;
   color: var(--ink-dim);
   text-transform: uppercase;
@@ -204,7 +204,7 @@ body::before {
 
 .arrow {
   font-family: inherit;
-  font-size: clamp(2.8rem, 9vw, 4.4rem);
+  font-size: clamp(3.08rem, 9.9vw, 4.84rem);
   line-height: 1;
   width: clamp(96px, 22vw, 140px);
   height: clamp(96px, 22vw, 140px);
@@ -249,6 +249,30 @@ body::before {
     0 0 0 1px rgba(0, 0, 0, 0.4),
     0 0 26px var(--cyan-soft),
     0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.github-link {
+  position: fixed;
+  bottom: calc(env(safe-area-inset-bottom) + 12px);
+  right: calc(env(safe-area-inset-right) + 12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--ink-dim);
+  border-radius: 6px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 120ms ease, background 120ms ease;
+  z-index: 50;
+}
+
+.github-link:hover,
+.github-link:focus-visible {
+  color: var(--cyan);
+  background: rgba(0, 240, 255, 0.06);
+  outline: none;
 }
 
 @media (orientation: landscape) and (max-height: 520px) {

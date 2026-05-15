@@ -36,25 +36,28 @@ end-user playback.
 Schema for each entry:
 
 ```json
-{ "name": "EE XFM", "url": "https://…", "bitrate": 224 }
+{ "region": "EE", "name": "XFM", "url": "https://…", "bitrate": 224 }
 ```
 
-- **`name`** — `<COUNTRY> [REGION] <Station Name>`. Country tags currently in
-  use: `EE` (Estonia), `FI HEL` (Helsinki, Finland). Keep the prefix short
-  and consistent so the display stays readable; the player shows the full
-  string verbatim.
+- **`region`** — short country/region tag rendered as a cyan label in the
+  info bar (e.g. `EE`, `FI HEL`). Channels with the same `region` value are
+  grouped together in the indicator row with a visible gap between groups,
+  so list them contiguously in the JSON.
+- **`name`** — station name only, without the region prefix. Shown in the
+  large channel-name slot (clamped to two lines).
 - **`url`** — direct media URL. Required to be **HTTPS** unless the user
   explicitly opts in to an HTTP-only stream (mixed content blocks iOS Safari
   and modern Chrome). Common types we support natively:
   - icecast / shoutcast: `.mp3`, `.aac`, no path / generic mount
   - HLS: `.m3u8` (both `master.m3u8` and a specific `variant.m3u8`)
-- **`bitrate`** — integer kbps. Required. Shown to the user as
-  `▸ NOW PLAYING / <bitrate>`. Determine it via `tools/probe-stream.sh`
-  before committing.
+- **`bitrate`** — integer kbps. Required. Shown in the info bar on the right
+  as `<bitrate> KBPS` while a channel is selected. Determine it via
+  `tools/probe-stream.sh` before committing.
 
 Order matters: channels are cycled with left/right arrows in array order.
-Keep regional groups together (all `EE` first, then `FI HEL`, …) so cycling
-within a region is easy.
+Keep regional groups together (all `FI HEL` first, then `EE`, …) so cycling
+within a region is easy. Current order in the repo: `FI HEL` first, then
+`EE`.
 
 ## Finding a stream URL
 
