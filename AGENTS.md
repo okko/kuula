@@ -1,4 +1,4 @@
-# AGENTS.md — conventions for future agents
+# AGENTS.md — conventions for agentes
 
 Read this before editing anything in this repo. The conventions below were
 hard-won during initial development; following them keeps results consistent
@@ -57,7 +57,8 @@ Schema for each entry:
 Order matters: channels are cycled with left/right arrows in array order.
 Keep regional groups together (all `FI HEL` first, then `EE`, …) so cycling
 within a region is easy. Current order in the repo: `FI HEL` first, then
-`EE`.
+`EE`. Within each region, follow the sort order documented in
+[README.md § Channel sort order](README.md#channel-sort-order).
 
 ## Finding a stream URL
 

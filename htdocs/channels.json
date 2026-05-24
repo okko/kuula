@@ -7,14 +7,8 @@
   },
   {
     "region": "FI HEL",
-    "name": "Yle Radio Suomi Helsinki",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027675/in-YleRS/256/variant.m3u8",
-    "bitrate": 256
-  },
-  {
-    "region": "FI HEL",
-    "name": "Yle X3M",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027678/in-YleX3M/256/variant.m3u8",
+    "name": "Yle Klassinen",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027676/in-YleKlassinen/256/variant.m3u8",
     "bitrate": 256
   },
   {
@@ -25,14 +19,8 @@
   },
   {
     "region": "FI HEL",
-    "name": "YleX",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027674/in-YleX/256/variant.m3u8",
-    "bitrate": 256
-  },
-  {
-    "region": "FI HEL",
-    "name": "Yle Klassinen",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027676/in-YleKlassinen/256/variant.m3u8",
+    "name": "Yle Radio Suomi Helsinki",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027675/in-YleRS/256/variant.m3u8",
     "bitrate": 256
   },
   {
@@ -43,20 +31,44 @@
   },
   {
     "region": "FI HEL",
-    "name": "Järviradio",
-    "url": "https://jarviradio.radiotaajuus.fi:9000/jr",
+    "name": "Yle X3M",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027678/in-YleX3M/256/variant.m3u8",
+    "bitrate": 256
+  },
+  {
+    "region": "FI HEL",
+    "name": "YleX",
+    "url": "https://yleradiolive.akamaized.net/hls/live/2027674/in-YleX/256/variant.m3u8",
+    "bitrate": 256
+  },
+  {
+    "region": "FI HEL",
+    "name": "Aito Iskelmä",
+    "url": "https://aud-stream-aitoiskelma.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
+  },
+  {
+    "region": "FI HEL",
+    "name": "Aito Iskelmä Finnhits",
+    "url": "https://ext-stream-pl06.nm-elemental.nelonenmedia.fi/HEF/master.m3u8",
     "bitrate": 128
   },
   {
     "region": "FI HEL",
-    "name": "Radio Dei",
-    "url": "https://stream.dei.fi/radioplayer/helsinki",
+    "name": "Aito Iskelmä Ulkomaiset Klassikot",
+    "url": "https://ext-stream-pl07.nm-elemental.nelonenmedia.fi/HEU/master.m3u8",
     "bitrate": 128
   },
   {
     "region": "FI HEL",
-    "name": "HitMix",
-    "url": "https://aud-stream-hitmix.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "name": "Basso",
+    "url": "https://stream-redirect.bauermedia.fi/basso/bassoradio_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "Classic Hits",
+    "url": "https://aud-stream-classichits.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
     "bitrate": 256
   },
   {
@@ -73,140 +85,20 @@
   },
   {
     "region": "FI HEL",
-    "name": "Radio Suomipop",
-    "url": "https://aud-stream-suomipop.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
-    "bitrate": 256
-  },
-  {
-    "region": "FI HEL",
-    "name": "Radio Rock",
-    "url": "https://aud-stream-radiorock.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
-    "bitrate": 256
-  },
-  {
-    "region": "FI HEL",
-    "name": "Loop",
-    "url": "https://aud-stream-loop.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
-    "bitrate": 256
-  },
-  {
-    "region": "FI HEL",
-    "name": "Classic Hits",
-    "url": "https://aud-stream-classichits.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
-    "bitrate": 256
-  },
-  {
-    "region": "FI HEL",
-    "name": "POPfm",
-    "url": "https://stream.rcs.revma.com/hr92cvyzz2nwv",
-    "bitrate": 192
-  },
-  {
-    "region": "FI HEL",
-    "name": "Aito Iskelmä",
-    "url": "https://aud-stream-aitoiskelma.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
-    "bitrate": 256
-  },
-  {
-    "region": "FI HEL",
-    "name": "Roll FM",
-    "url": "https://rollfm.online/",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "Kaupunkiradio",
-    "url": "https://kaupunkiradio.radiotaajuus.fi:9013/radio",
-    "bitrate": 192
-  },
-  {
-    "region": "FI HEL",
-    "name": "RadioSE",
-    "url": "https://wr2.downtime.fi/kaakko.aac",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "Radio Rock Lite",
-    "url": "https://ext-stream-pl02.nm-elemental.nelonenmedia.fi/HEI/master.m3u8",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "HitMix 80's",
-    "url": "https://ext-stream-pl09.nm-elemental.nelonenmedia.fi/HEH/master.m3u8",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
     "name": "Groove FM Lounge",
     "url": "https://ext-stream-pl08.nm-elemental.nelonenmedia.fi/HEG/master.m3u8",
     "bitrate": 128
   },
   {
     "region": "FI HEL",
-    "name": "Radio Rock Metal",
-    "url": "https://ext-stream-pl03.nm-elemental.nelonenmedia.fi/HEM/master.m3u8",
-    "bitrate": 128
+    "name": "HitMix",
+    "url": "https://aud-stream-hitmix.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
   },
   {
     "region": "FI HEL",
-    "name": "Loop EDM",
-    "url": "https://ext-stream-pl10.nm-elemental.nelonenmedia.fi/HEE/master.m3u8",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "Radio Rock Classics",
-    "url": "https://ext-stream-pl01.nm-elemental.nelonenmedia.fi/HEC/master.m3u8",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "Radio Suomipop Top40",
-    "url": "https://ext-stream-pl05.nm-elemental.nelonenmedia.fi/HET/master.m3u8",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "Radio Suomipop Klassikot",
-    "url": "https://ext-stream-pl04.nm-elemental.nelonenmedia.fi/HEK/master.m3u8",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "Aito Iskelmä Ulkomaiset Klassikot",
-    "url": "https://ext-stream-pl07.nm-elemental.nelonenmedia.fi/HEU/master.m3u8",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "Aito Iskelmä Finnhits",
-    "url": "https://ext-stream-pl06.nm-elemental.nelonenmedia.fi/HEF/master.m3u8",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "Radio Nova",
-    "url": "https://stream-redirect.bauermedia.fi/radionova/radionova_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&device=smartv&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "NRJ",
-    "url": "https://stream-redirect.bauermedia.fi/nrj/nrj_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "SuomiRäp",
-    "url": "https://stream-redirect.bauermedia.fi/suomirap/suomirap_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "TOP51",
-    "url": "https://stream-redirect.bauermedia.fi/top51/top51_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
+    "name": "HitMix 80's",
+    "url": "https://ext-stream-pl09.nm-elemental.nelonenmedia.fi/HEH/master.m3u8",
     "bitrate": 128
   },
   {
@@ -217,20 +109,8 @@
   },
   {
     "region": "FI HEL",
-    "name": "Radio Pooki",
-    "url": "https://stream-redirect.bauermedia.fi/radiopooki/radiopooki_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "SuomiRock",
-    "url": "https://stream-redirect.bauermedia.fi/suomirock/suomirock_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
-  },
-  {
-    "region": "FI HEL",
-    "name": "Radio Nostalgia",
-    "url": "https://stream-redirect.bauermedia.fi/nostalgia/nostalgia_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
+    "name": "Järviradio",
+    "url": "https://jarviradio.radiotaajuus.fi:9000/jr",
     "bitrate": 128
   },
   {
@@ -241,15 +121,33 @@
   },
   {
     "region": "FI HEL",
-    "name": "Basso",
-    "url": "https://stream-redirect.bauermedia.fi/basso/bassoradio_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
+    "name": "Kaupunkiradio",
+    "url": "https://kaupunkiradio.radiotaajuus.fi:9013/radio",
+    "bitrate": 192
+  },
+  {
+    "region": "FI HEL",
+    "name": "Loop",
+    "url": "https://aud-stream-loop.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
+  },
+  {
+    "region": "FI HEL",
+    "name": "Loop EDM",
+    "url": "https://ext-stream-pl10.nm-elemental.nelonenmedia.fi/HEE/master.m3u8",
     "bitrate": 128
   },
   {
     "region": "FI HEL",
-    "name": "Tekoälyradio",
-    "url": "https://stream-redirect.bauermedia.fi/tekoalyradio/tekoalyradio_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
+    "name": "NRJ",
+    "url": "https://stream-redirect.bauermedia.fi/nrj/nrj_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
     "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "POPfm",
+    "url": "https://stream.rcs.revma.com/hr92cvyzz2nwv",
+    "bitrate": 192
   },
   {
     "region": "FI HEL",
@@ -264,22 +162,112 @@
     "bitrate": 128
   },
   {
-    "region": "EE",
-    "name": "XFM",
-    "url": "https://stream1.rcast.net/73328",
-    "bitrate": 224
+    "region": "FI HEL",
+    "name": "Radio Dei",
+    "url": "https://stream.dei.fi/radioplayer/helsinki",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "Radio Nostalgia",
+    "url": "https://stream-redirect.bauermedia.fi/nostalgia/nostalgia_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "Radio Nova",
+    "url": "https://stream-redirect.bauermedia.fi/radionova/radionova_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&device=smartv&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "Radio Pooki",
+    "url": "https://stream-redirect.bauermedia.fi/radiopooki/radiopooki_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "Radio Rock",
+    "url": "https://aud-stream-radiorock.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
+  },
+  {
+    "region": "FI HEL",
+    "name": "Radio Rock Classics",
+    "url": "https://ext-stream-pl01.nm-elemental.nelonenmedia.fi/HEC/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "Radio Rock Lite",
+    "url": "https://ext-stream-pl02.nm-elemental.nelonenmedia.fi/HEI/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "Radio Rock Metal",
+    "url": "https://ext-stream-pl03.nm-elemental.nelonenmedia.fi/HEM/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "Radio Suomipop",
+    "url": "https://aud-stream-suomipop.nm-elemental.nelonenmedia.fi/playlist-256000.m3u8",
+    "bitrate": 256
+  },
+  {
+    "region": "FI HEL",
+    "name": "Radio Suomipop Klassikot",
+    "url": "https://ext-stream-pl04.nm-elemental.nelonenmedia.fi/HEK/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "Radio Suomipop Top40",
+    "url": "https://ext-stream-pl05.nm-elemental.nelonenmedia.fi/HET/master.m3u8",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "RadioSE",
+    "url": "https://wr2.downtime.fi/kaakko.aac",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "Roll FM",
+    "url": "https://rollfm.online/",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "SuomiRock",
+    "url": "https://stream-redirect.bauermedia.fi/suomirock/suomirock_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "SuomiRäp",
+    "url": "https://stream-redirect.bauermedia.fi/suomirap/suomirap_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "Tekoälyradio",
+    "url": "https://stream-redirect.bauermedia.fi/tekoalyradio/tekoalyradio_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
+    "bitrate": 128
+  },
+  {
+    "region": "FI HEL",
+    "name": "TOP51",
+    "url": "https://stream-redirect.bauermedia.fi/top51/top51_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
+    "bitrate": 128
   },
   {
     "region": "EE",
     "name": "BIGfm",
     "url": "https://sc2.flamebox.org/bigfm-hd",
     "bitrate": 320
-  },
-  {
-    "region": "EE",
-    "name": "Duo Radio",
-    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/radioduo.aac",
-    "bitrate": 192
   },
   {
     "region": "EE",
@@ -313,9 +301,21 @@
   },
   {
     "region": "EE",
+    "name": "Duo Radio",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/radioduo.aac",
+    "bitrate": 192
+  },
+  {
+    "region": "EE",
     "name": "Duo Softmix",
     "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/DS_softmix.aac",
     "bitrate": 192
+  },
+  {
+    "region": "EE",
+    "name": "Echo",
+    "url": "https://edifchqufozvbegw.global.ssl.fastly.net/audio_echofm/stream",
+    "bitrate": 64
   },
   {
     "region": "EE",
@@ -334,12 +334,6 @@
     "name": "Elmari Tantsuõhtu",
     "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/elmaritantsuohtu.aac",
     "bitrate": 192
-  },
-  {
-    "region": "EE",
-    "name": "Raadio Kidzone",
-    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/kidzone.aac",
-    "bitrate": 160
   },
   {
     "region": "EE",
@@ -385,9 +379,9 @@
   },
   {
     "region": "EE",
-    "name": "Echo",
-    "url": "https://edifchqufozvbegw.global.ssl.fastly.net/audio_echofm/stream",
-    "bitrate": 64
+    "name": "Raadio Kidzone",
+    "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/kidzone.aac",
+    "bitrate": 160
   },
   {
     "region": "EE",
@@ -418,6 +412,12 @@
     "name": "Vikerraadio",
     "url": "https://icecast.err.ee/vikerraadio.mp3",
     "bitrate": 128
+  },
+  {
+    "region": "EE",
+    "name": "XFM",
+    "url": "https://stream1.rcast.net/73328",
+    "bitrate": 224
   },
   {
     "region": "EE",

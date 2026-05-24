@@ -32,7 +32,7 @@ tools/          Dev utilities (not deployed)
   check-channels.sh  Run probe-stream over every entry in channels.json
   find-stream-url.sh Find the stream URL a station's landing page publishes
 
-AGENTS.md       Conventions for future Claude/AI agents working on this repo
+AGENTS.md       Conventions for agentes working on this repo
 ```
 
 ## Develop
@@ -79,6 +79,21 @@ Configured in [`htdocs/channels.json`](htdocs/channels.json). Each entry:
   HTTPS pages as mixed content.
 - **`bitrate`** — integer kilobits/sec. Shown in the info bar on the right
   with a " KBPS" suffix.
+
+### Channel sort order
+
+Within each region, channels follow this fixed order:
+
+**`FI HEL` (Finnish, Helsinki)**
+1. Radio Helsinki — always first.
+2. Yle channels — alphabetically by name: Yle Klassinen, Yle Radio 1,
+   Yle Radio Suomi Helsinki, Yle Vega, Yle X3M, YleX.
+3. All other Finnish channels — alphabetically by name. Finnish characters
+   (Ä, Ö) sort after Z, matching Finnish alphabetical convention.
+
+**`EE` (Estonian)**
+All channels alphabetically by name. Estonian/Finnish special characters
+(Ä, Ö, Õ) sort after Z.
 
 Before committing a new channel: run `./tools/check-channels.sh` and confirm
 each new entry shows `STATUS=ok`. See [`AGENTS.md`](AGENTS.md) for the full
