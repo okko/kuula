@@ -63,7 +63,8 @@
     "region": "FI HEL",
     "name": "Basso",
     "url": "https://stream-redirect.bauermedia.fi/basso/bassoradio_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "FI HEL",
@@ -105,7 +106,8 @@
     "region": "FI HEL",
     "name": "Iskelmä",
     "url": "https://stream-redirect.bauermedia.fi/iskelma/iskelma_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "FI HEL",
@@ -117,7 +119,8 @@
     "region": "FI HEL",
     "name": "Kasari",
     "url": "https://stream-redirect.bauermedia.fi/kasari/kasari_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "FI HEL",
@@ -141,7 +144,8 @@
     "region": "FI HEL",
     "name": "NRJ",
     "url": "https://stream-redirect.bauermedia.fi/nrj/nrj_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "FI HEL",
@@ -153,13 +157,15 @@
     "region": "FI HEL",
     "name": "Radio City",
     "url": "https://stream-redirect.bauermedia.fi/radiocity/radiocity_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "FI HEL",
     "name": "Radio Classic",
     "url": "https://stream-redirect.bauermedia.fi/classic/classic_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "FI HEL",
@@ -171,19 +177,22 @@
     "region": "FI HEL",
     "name": "Radio Nostalgia",
     "url": "https://stream-redirect.bauermedia.fi/nostalgia/nostalgia_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "FI HEL",
     "name": "Radio Nova",
     "url": "https://stream-redirect.bauermedia.fi/radionova/radionova_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&device=smartv&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "FI HEL",
     "name": "Radio Pooki",
     "url": "https://stream-redirect.bauermedia.fi/radiopooki/radiopooki_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "FI HEL",
@@ -243,25 +252,29 @@
     "region": "FI HEL",
     "name": "SuomiRock",
     "url": "https://stream-redirect.bauermedia.fi/suomirock/suomirock_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "FI HEL",
     "name": "SuomiRäp",
     "url": "https://stream-redirect.bauermedia.fi/suomirap/suomirap_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "FI HEL",
     "name": "Tekoälyradio",
     "url": "https://stream-redirect.bauermedia.fi/tekoalyradio/tekoalyradio_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "FI HEL",
     "name": "TOP51",
     "url": "https://stream-redirect.bauermedia.fi/top51/top51_128.mp3?aw_0_1st.bauer_loggedin=false&aw_0_1st.playerid=%7EPLAYER_ID%7E&aw_0_req.userConsentV2=%7ETCSTRING%7E&aw_0_awz.listenerid=%28%7ELSID%7E%29&aw_0_1st.platform=%28%7EPLATFORM%7E%29&aw_0_awz.appVers=%28%7EAPPVERSION%7E%29&aw_0_1st.bauer_preroll=%28%7EREQUEST_PREROLL%7E%29&aw_0_1st.in_car=%28%7EIN_CAR%7E%29&lat=%28%7ELAT%7E%29&lon=%28%7ELONG%7E%29",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "EE",

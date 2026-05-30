@@ -2,7 +2,17 @@
   const STORAGE_KEY = "kuula.channelIndex";
   const VU_MODE_KEY = "kuula.vuMode";
 
-  const audio = document.getElementById("audio");
+  // Two audio elements. `audioWA` is wired into the Web Audio graph for real
+  // VU metering; once createMediaElementSource() captures an element it
+  // permanently routes through the graph, which outputs SILENCE for any
+  // CORS-cross-origin (tainted) media — so it is only ever used for channels
+  // marked CORS-clean. `audioPlain` is never wired to Web Audio and plays
+  // CORS-opaque streams ("cors": false) audibly, with a simulated meter.
+  // `audio` points at whichever element is currently active.
+  const audioWA = document.getElementById("audio");
+  const audioPlain = document.getElementById("audio-plain");
+  audioWA.crossOrigin = "anonymous"; // only plays CORS-clean channels
+  let audio = audioPlain;
   const display = document.getElementById("display");
   const channelNameEl = document.getElementById("channel-name");
   const statusEl = document.getElementById("status");
@@ -129,17 +139,14 @@
     const ch = channels[currentIndex];
     const url = ch.url;
     clearPendingLoading();
-    resetSilenceWatchdog();
-    audio.pause();
-    // CORS: request anonymous so the Web Audio API can read samples for the VU
-    // meter. Must be set BEFORE src/load() to take effect on this load. Streams
-    // whose server lacks CORS headers ("cors": false) keep crossorigin unset —
-    // setting it would taint/break them — and fall back to a simulated meter.
-    if (ch.cors === false) {
-      audio.removeAttribute("crossorigin");
-    } else {
-      audio.crossOrigin = "anonymous";
-    }
+    // Route CORS-clean channels through the metered element, everything marked
+    // "cors": false through the plain element so it stays audible. CORS support
+    // is determined by manual testing (see channels.json / AGENTS.md), not
+    // probed at runtime — a server that drops CORS will go silent on its
+    // metered channel until its flag is flipped.
+    audio = ch.cors === false ? audioPlain : audioWA;
+    audioWA.pause();
+    audioPlain.pause();
     audio.src = url;
     // load() forces the browser to apply the new src and discard buffer
     try { audio.load(); } catch { /* ignore */ }
@@ -210,28 +217,34 @@
       }
     });
 
-    audio.addEventListener("playing", () => {
-      clearPendingLoading();
-      setStatus("playing");
-      armSilenceWatchdog();
-      startMeterLoop();
-    });
-    audio.addEventListener("waiting", () => {
-      if (userWantsPlay) scheduleLoading();
-    });
-    audio.addEventListener("stalled", () => {
-      if (userWantsPlay) scheduleLoading();
-    });
-    audio.addEventListener("pause", () => {
-      clearPendingLoading();
-      stopMeterLoop();
-      if (!userWantsPlay) setStatus("paused");
-    });
-    audio.addEventListener("error", () => {
-      clearPendingLoading();
-      stopMeterLoop();
-      setStatus("error");
-    });
+    // Listeners on both elements; ignore events from whichever isn't active
+    // (e.g. the pause fired when we switch elements while tuning).
+    for (const el of [audioWA, audioPlain]) {
+      el.addEventListener("playing", (e) => {
+        if (e.target !== audio) return;
+        clearPendingLoading();
+        setStatus("playing");
+        startMeterLoop();
+      });
+      el.addEventListener("waiting", (e) => {
+        if (e.target === audio && userWantsPlay) scheduleLoading();
+      });
+      el.addEventListener("stalled", (e) => {
+        if (e.target === audio && userWantsPlay) scheduleLoading();
+      });
+      el.addEventListener("pause", (e) => {
+        if (e.target !== audio) return;
+        clearPendingLoading();
+        stopMeterLoop();
+        if (!userWantsPlay) setStatus("paused");
+      });
+      el.addEventListener("error", (e) => {
+        if (e.target !== audio) return;
+        clearPendingLoading();
+        stopMeterLoop();
+        setStatus("error");
+      });
+    }
 
     // VU meter is its own click target inside the display (which is the
     // play/pause button) — stop events from bubbling so cycling the meter
@@ -272,17 +285,16 @@
   let webAudioReady = false;
   let webAudioBroken = false;
 
-  // Channels whose real metering turned out tainted/silent this session.
-  const simulatedChannels = new Set();
-
   function ensureAudioGraph() {
     if (webAudioReady || webAudioBroken) return webAudioReady;
     const AC = window.AudioContext || window.webkitAudioContext;
     if (!AC) { webAudioBroken = true; return false; }
     try {
       audioCtx = new AC();
-      // createMediaElementSource may be called only ONCE per element.
-      sourceNode = audioCtx.createMediaElementSource(audio);
+      // createMediaElementSource may be called only ONCE per element, and
+      // permanently reroutes it — so we only ever capture the dedicated
+      // metered element, never the plain one.
+      sourceNode = audioCtx.createMediaElementSource(audioWA);
       const splitter = audioCtx.createChannelSplitter(2);
       analyserL = audioCtx.createAnalyser();
       analyserR = audioCtx.createAnalyser();
@@ -339,34 +351,11 @@
     return { level: Math.min(1, rms * 2.2), peak: Math.min(1, peak) };
   }
 
-  // Silence watchdog: a CORS-enabled stream that reads pure silence for ~2s
-  // after 'playing' fired is tainted — fall back to simulated for it.
-  let silenceArmed = false;
-  let lastNonSilentAt = 0;
-  const SILENCE_MS = 2000;
-
-  function armSilenceWatchdog() {
-    silenceArmed = true;
-    lastNonSilentAt = performance.now();
-  }
-  function resetSilenceWatchdog() {
-    silenceArmed = false;
-    lastNonSilentAt = 0;
-  }
-  function noteAnalyserActivity(level) {
-    if (!silenceArmed) return;
-    const now = performance.now();
-    if (level > 0.002) { lastNonSilentAt = now; return; }
-    if (now - lastNonSilentAt > SILENCE_MS) {
-      simulatedChannels.add(currentIndex);
-      silenceArmed = false;
-    }
-  }
-
+  // Real metering is available exactly when the active element is the one
+  // wired into the Web Audio graph (CORS-clean channels). The plain element
+  // (CORS-opaque channels) always uses the simulated meter.
   function realMeteringActive() {
-    const ch = channels[currentIndex];
-    return !!(webAudioReady && ch && ch.cors !== false &&
-              !simulatedChannels.has(currentIndex));
+    return audio === audioWA && webAudioReady;
   }
 
   // Simulated levels: believable "music" wiggle for non-CORS / no-Web-Audio.
@@ -519,7 +508,6 @@
       lT = L.level; rT = R.level; lP = L.peak; rP = R.peak;
       // mono streams: mirror L to a flat R
       if (rT < 0.0005 && lT > 0.01) { rT = lT; rP = lP; }
-      noteAnalyserActivity(Math.max(lT, rT));
     } else {
       const sim = simulatedLevels(now);
       lT = sim.l; rT = sim.r; lP = lT; rP = rT;
