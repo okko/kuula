@@ -369,13 +369,15 @@
     "region": "EE",
     "name": "R2 Altpop",
     "url": "https://icecast.err.ee/r2alternatiiv.mp3",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "EE",
     "name": "Raadio 4",
     "url": "https://icecast.err.ee/raadio4.mp3",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "EE",
@@ -387,7 +389,8 @@
     "region": "EE",
     "name": "Raadio Tallinn",
     "url": "https://icecast.err.ee/raadiotallinn.mp3",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "EE",
@@ -411,7 +414,8 @@
     "region": "EE",
     "name": "Vikerraadio",
     "url": "https://icecast.err.ee/vikerraadio.mp3",
-    "bitrate": 128
+    "bitrate": 128,
+    "cors": false
   },
   {
     "region": "EE",

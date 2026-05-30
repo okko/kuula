@@ -195,6 +195,107 @@ body::before {
   50% { opacity: 0.55; }
 }
 
+/* VU meter — own click target inside the display; cycles off/led/needle */
+.vu {
+  margin-top: 4px;
+  min-height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.vu:focus-visible {
+  box-shadow: 0 0 0 1px var(--cyan-soft), 0 0 10px var(--cyan-dim);
+}
+
+.vu[data-mode="off"]::after {
+  content: "— VU —";
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  color: var(--ink-dim);
+  opacity: 0.5;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.vu-led {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.vu[data-mode="led"] .vu-led {
+  display: flex;
+}
+
+.vu-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vu-ch {
+  font-size: 0.95rem;
+  color: var(--ink-dim);
+  width: 1ch;
+  letter-spacing: 0.1em;
+}
+
+.vu-bar {
+  position: relative;
+  flex: 1 1 auto;
+  height: 10px;
+  border: 1px solid var(--cyan-dim);
+  border-radius: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--cyan-dim) 0 7px,
+    transparent 7px 9px
+  );
+  overflow: hidden;
+}
+
+.vu-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: var(--fill, 0%);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--cyan) 0 7px,
+    transparent 7px 9px
+  );
+  box-shadow: 0 0 6px var(--cyan-soft);
+}
+
+.vu-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--peak, 0%);
+  width: 2px;
+  margin-left: -1px;
+  background: var(--cyan);
+  box-shadow: 0 0 6px var(--cyan);
+  opacity: 0.85;
+}
+
+.vu-canvas {
+  width: 100%;
+  height: 72px;
+  display: none;
+}
+
+.vu[data-mode="needle"] .vu-canvas {
+  display: block;
+}
+
 .controls {
   display: flex;
   gap: clamp(32px, 10vw, 96px);
@@ -285,5 +386,8 @@ body::before {
     width: auto;
     min-height: auto;
     height: min(70dvh, 320px);
+  }
+  .vu-canvas {
+    height: 56px;
   }
 }
