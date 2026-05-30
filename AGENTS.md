@@ -53,6 +53,18 @@ Schema for each entry:
 - **`bitrate`** — integer kbps. Required. Shown in the info bar on the right
   as `<bitrate> KBPS` while a channel is selected. Determine it via
   `tools/probe-stream.sh` before committing.
+- **`cors`** — optional boolean, default `true`. Set to `false` **only** for
+  streams whose server does not send `Access-Control-Allow-Origin` headers.
+  When `true` (the default) the player sets `crossorigin="anonymous"` so the
+  Web Audio API can read samples for the VU meter; on a server without CORS
+  headers that would taint/break the stream, so those entries opt out with
+  `"cors": false` and fall back to a simulated meter. As of the last audit
+  67/71 streams support CORS — only the four `icecast.err.ee` ERR streams
+  (R2 Altpop, Raadio 4, Raadio Tallinn, Vikerraadio) need `"cors": false`.
+  To re-check a stream: a cross-origin GET with an `Origin` header that returns
+  `Access-Control-Allow-Origin` (`*` or the reflected origin) supports CORS.
+  For HLS (`.m3u8`), the media **segments** must also send the header, not just
+  the playlist.
 
 Order matters: channels are cycled with left/right arrows in array order.
 Keep regional groups together (all `FI HEL` first, then `EE`, …) so cycling
@@ -141,13 +153,27 @@ Things that look load-bearing and are:
 
 - **`preload="none"` on `<audio>`** — without it, iOS Safari auto-loads the
   first channel and the user's first interaction may not register as a gesture.
-- **No `crossorigin` attribute** — most station icecast servers don't send
-  CORS headers, and we don't need Web Audio API features. Setting
-  `crossorigin="anonymous"` would block playback.
+- **`crossorigin="anonymous"` set by default (per-channel)** — the VU meter
+  reads per-L/R levels via the Web Audio API, which only works on a
+  CORS-clean media element. `tuneTo()` sets `audio.crossOrigin` *before*
+  `audio.src`/`load()` based on the channel's `cors` flag (default on).
+  Streams without CORS headers (`"cors": false`) keep it unset — setting it
+  there would taint/break playback — and use a simulated meter instead. A
+  runtime watchdog also falls a channel back to simulated if its analyser
+  reads pure silence for ~2s after `playing` (catches a server whose CORS
+  regresses). See the `cors` field under "Channels" above.
 - **First `audio.play()` must come from a click/keydown handler** — iOS
   autoplay policy.
-- **`localStorage` persistence of `currentIndex`** — clamp to range on load
-  in case channels.json shrank.
+- **`localStorage` persistence of `currentIndex`** (`kuula.channelIndex`) —
+  clamp to range on load in case channels.json shrank. The VU meter mode
+  (`kuula.vuMode`: `off`/`led`/`needle`) is persisted under its own key.
+- **Web Audio graph built once, from a user gesture.** `AudioContext` +
+  `createMediaElementSource(audio)` are created lazily inside `togglePlay`/
+  `step` (iOS needs a gesture to start/resume the context).
+  `createMediaElementSource` may be called **only once per element**, and the
+  source **must** `connect(audioCtx.destination)` or routing through Web Audio
+  silences playback. The meter only runs `requestAnimationFrame` while playing
+  and the mode isn't `off`.
 - **Bitrate suffix only shown for `▸ NOW PLAYING` state** — adding it to
   `◼ PAUSED` would be noise; the user explicitly asked for it under "now playing".
 
@@ -230,9 +256,14 @@ to "simplify":
   interchangeable CDN origins; the `HE<X>` letter code identifies the
   channel. So `pl09/HEH` and `pl05/HEH` serve identical content. We keep
   whichever `pl0X` the broadcaster's player used — no value in normalizing.
-- **No `crossorigin="anonymous"` on `<audio>`.** Most station icecast
-  servers don't send CORS headers, and we don't need Web Audio API features.
-  Setting `crossorigin` would block playback for those streams.
+- **`crossorigin="anonymous"` on `<audio>`, per channel.** Added for the
+  Web Audio VU meter (needs CORS-clean media to read samples). An audit found
+  67/71 streams send `Access-Control-Allow-Origin` (`*` or reflected origin),
+  including HLS segments — so the earlier assumption that "most icecast servers
+  lack CORS" was wrong for this list. The four `icecast.err.ee` ERR streams are
+  the exception and carry `"cors": false`, which keeps `crossorigin` unset for
+  them (setting it would taint/break playback) and shows a simulated meter. A
+  silence watchdog gives the same fallback for any stream whose CORS regresses.
 - **`preload="none"`.** iOS Safari otherwise eagerly fetches the first
   channel, which can desynchronise the autoplay-gesture requirement on first
   load.

@@ -38,6 +38,27 @@
         </div>
         <div id="channel-name" class="channel-name">— — —</div>
         <div id="status" class="status">◼ PAUSED</div>
+        <div
+          id="vu"
+          class="vu"
+          data-mode="off"
+          role="button"
+          tabindex="0"
+          aria-label="Cycle VU meter mode"
+          title="VU meter (click to cycle)"
+        >
+          <div class="vu-led" hidden aria-hidden="true">
+            <div class="vu-row">
+              <span class="vu-ch">L</span>
+              <div class="vu-bar" id="vu-bar-l"></div>
+            </div>
+            <div class="vu-row">
+              <span class="vu-ch">R</span>
+              <div class="vu-bar" id="vu-bar-r"></div>
+            </div>
+          </div>
+          <canvas id="vu-canvas" class="vu-canvas" hidden aria-hidden="true"></canvas>
+        </div>
       </section>
 
       <nav class="controls" aria-label="Channel controls">
