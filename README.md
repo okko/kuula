@@ -25,12 +25,14 @@ htdocs/         Deployable site (this is what you upload to a static host)
   styles.css
   app.js
   channels.json
+  channels_difm.json
 
 tools/          Dev utilities (not deployed)
-  serve.sh           Start a local dev server
-  probe-stream.sh    Validate one stream URL and detect bitrate
-  check-channels.sh  Run probe-stream over every entry in channels.json
-  find-stream-url.sh Find the stream URL a station's landing page publishes
+  serve.sh                Start a local dev server
+  probe-stream.sh         Validate one stream URL and detect bitrate
+  check-channels.sh       Run probe-stream over every entry in channels.json
+  find-stream-url.sh      Find the stream URL a station's landing page publishes
+  fetch-difm-channels.sh  Refresh channels_difm.json from the DI.FM API
 
 AGENTS.md       Conventions for agentes working on this repo
 ```
@@ -99,6 +101,32 @@ Before committing a new channel: run `./tools/check-channels.sh` and confirm
 each new entry shows `STATUS=ok`. See [`AGENTS.md`](AGENTS.md) for the full
 conventions (how to find a stream URL, how to determine bitrate, browser
 compatibility notes, etc).
+
+## DI.FM channels (optional, HTTP origin only)
+
+If you have a paid [DI.FM](https://www.di.fm) subscription, open Settings
+(the gear button) and save your listen key (from
+[di.fm/settings](https://www.di.fm/settings)). The player then appends every
+channel from [`htdocs/channels_difm.json`](htdocs/channels_difm.json) as an
+Ultra 320 kbit/s MP3 stream (`http://prem1.di.fm/<channel>_hi?<listenKey>`).
+The key is stored only in your browser's `localStorage` and is sent only to
+DI.FM as part of the stream URL.
+
+**DI.FM is HTTP-only.** DI.FM's listen-key stream servers have no HTTPS
+endpoint — none of their stream hosts speaks TLS on any port, and all of
+their APIs hand out `http://` URLs only (this applies to the whole
+AudioAddict network: RadioTunes, JazzRadio, RockRadio, ClassicalRadio,
+ZenRadio; verified June 2026). Browsers block HTTP audio inside an HTTPS
+page as mixed content, so:
+
+- **HTTP origin** (e.g. `./tools/serve.sh` → `http://localhost:8000`, or any
+  HTTP deploy): DI.FM channels work.
+- **HTTPS deploy** (GitHub Pages, Netlify, …): DI.FM cannot work. The app
+  hides the Settings button, ignores any saved key, and adds no DI.FM
+  channels — everything else keeps working as before.
+
+This is DI.FM's limitation, not the app's; there is no HTTPS stream URL to
+switch to. See [`AGENTS.md`](AGENTS.md) for the verification details.
 
 ## Browser support
 
