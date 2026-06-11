@@ -1,6 +1,17 @@
 (() => {
   const STORAGE_KEY = "kuula.channelIndex";
   const VU_MODE_KEY = "kuula.vuMode";
+  const DIFM_KEY = "kuula.difmListenKey";
+  // Valid: strictly more than 10 lowercase hex chars (i.e. at least 11).
+  const DIFM_KEY_RE = /^[0-9a-f]{11,}$/;
+  // DI.FM's listen-key streams are HTTP-only and get blocked as mixed content
+  // when this page is served over HTTPS, so DI.FM is unusable there. On an
+  // HTTPS origin we hide Settings entirely and ignore any saved listen key.
+  // This is a hard limitation on DI.FM's side, not ours: no DI.FM/AudioAddict
+  // stream host speaks TLS on any port and none has ever had a certificate
+  // issued (verified 2026-06 via direct probes and CT logs) — do not retry
+  // turning these URLs into https://.
+  const DIFM_SUPPORTED = location.protocol !== "https:";
 
   // Two audio elements. `audioWA` is wired into the Web Audio graph for real
   // VU metering; once createMediaElementSource() captures an element it
@@ -26,6 +37,16 @@
   const vuBarL = document.getElementById("vu-bar-l");
   const vuBarR = document.getElementById("vu-bar-r");
   const vuCanvas = document.getElementById("vu-canvas");
+
+  // Settings UI
+  const settingsOpenBtn = document.getElementById("settings-open");
+  const settingsOverlay = document.getElementById("settings-overlay");
+  const settingsCloseBtn = document.getElementById("settings-close");
+  const settingsCancelBtn = document.getElementById("settings-cancel");
+  const settingsSaveBtn = document.getElementById("settings-save");
+  const difmInput = document.getElementById("difm-listen-key");
+  const difmError = document.getElementById("difm-key-error");
+  let lastFocusedBeforeSettings = null;
 
   let channels = [];
   let currentIndex = 0;
@@ -83,15 +104,22 @@
 
   function renderIndicators() {
     indicatorsEl.textContent = "";
+    let group = null;
     let prevRegion = null;
     for (let i = 0; i < channels.length; i++) {
+      const region = channels[i].region || "";
+      // Start a new group container at each region boundary so every region
+      // flows as one intact unit and wraps as a whole (like a word).
+      if (group === null || region !== prevRegion) {
+        group = document.createElement("span");
+        group.className = "channel-group";
+        indicatorsEl.appendChild(group);
+      }
+      prevRegion = region;
       const dot = document.createElement("span");
       dot.className = "channel-indicator";
       if (i === currentIndex) dot.classList.add("active");
-      const region = channels[i].region || "";
-      if (region !== prevRegion) dot.dataset.groupStart = "true";
-      prevRegion = region;
-      indicatorsEl.appendChild(dot);
+      group.appendChild(dot);
     }
   }
 
@@ -195,6 +223,100 @@
     tuneTo(currentIndex + delta, { play: true });
   }
 
+  // ---- Settings ---------------------------------------------------------
+
+  function loadDifmKey() {
+    try {
+      return localStorage.getItem(DIFM_KEY) || "";
+    } catch {
+      return "";
+    }
+  }
+
+  function clearDifmError() {
+    difmError.hidden = true;
+    difmError.textContent = "";
+    difmInput.removeAttribute("aria-invalid");
+  }
+
+  function openSettings() {
+    lastFocusedBeforeSettings =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    difmInput.value = loadDifmKey();
+    clearDifmError();
+    settingsOverlay.hidden = false;
+    difmInput.focus();
+  }
+
+  function closeSettings() {
+    if (settingsOverlay.hidden) return;
+    settingsOverlay.hidden = true;
+    clearDifmError();
+    if (lastFocusedBeforeSettings && document.contains(lastFocusedBeforeSettings)) {
+      lastFocusedBeforeSettings.focus();
+    }
+  }
+
+  function saveSettings() {
+    const value = difmInput.value.trim();
+    if (value === "") {
+      // Empty means "no key": remove it from storage.
+      try {
+        localStorage.removeItem(DIFM_KEY);
+      } catch {
+        /* private mode etc — ignore */
+      }
+      closeSettings();
+      return;
+    }
+    if (!DIFM_KEY_RE.test(value)) {
+      difmError.textContent =
+        "Invalid key. Must be more than 10 lowercase hex characters (0-9, a-f).";
+      difmError.hidden = false;
+      difmInput.setAttribute("aria-invalid", "true");
+      difmInput.focus();
+      return; // do NOT persist an invalid key
+    }
+    try {
+      localStorage.setItem(DIFM_KEY, value);
+    } catch {
+      /* private mode etc — ignore */
+    }
+    closeSettings();
+  }
+
+  function wireSettings() {
+    if (!DIFM_SUPPORTED) {
+      // Over HTTPS the only setting (DI.FM listen key) can't work, so hide
+      // the gear and skip wiring — Settings is unreachable here.
+      settingsOpenBtn.hidden = true;
+      return;
+    }
+    settingsOpenBtn.addEventListener("click", openSettings);
+    settingsCloseBtn.addEventListener("click", closeSettings);
+    settingsCancelBtn.addEventListener("click", closeSettings);
+    settingsSaveBtn.addEventListener("click", saveSettings);
+    // Clear the validation message as soon as the user edits the field.
+    difmInput.addEventListener("input", clearDifmError);
+    difmInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        saveSettings();
+      }
+    });
+    // Click on the backdrop (outside the panel) closes.
+    settingsOverlay.addEventListener("click", (e) => {
+      if (e.target === settingsOverlay) closeSettings();
+    });
+    // Escape closes from anywhere while the panel is open.
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !settingsOverlay.hidden) {
+        e.preventDefault();
+        closeSettings();
+      }
+    });
+  }
+
   function wireEvents() {
     prevBtn.addEventListener("click", () => step(-1));
     nextBtn.addEventListener("click", () => step(+1));
@@ -208,6 +330,9 @@
     });
 
     document.addEventListener("keydown", (e) => {
+      // Don't hijack arrow keys while the settings panel is open (the user may
+      // be navigating the text field).
+      if (!settingsOverlay.hidden) return;
       if (e.key === "ArrowLeft") {
         e.preventDefault();
         step(-1);
@@ -573,8 +698,58 @@
     applyVuMode();
   }
 
+  // Append DI.FM channels iff a valid listen key is saved. Validation matches
+  // the Settings UI exactly (DIFM_KEY_RE). With no valid key this is a no-op:
+  // it never fetches channels_difm.json and never touches the channels array,
+  // so the player behaves byte-for-byte as before. Any failure (network, parse,
+  // unexpected shape) is logged and swallowed so the base player keeps working.
+  async function appendDifmChannels() {
+    // Over HTTPS the HTTP-only DI.FM streams are mixed-content blocked, so
+    // ignore any saved listen key and add nothing — the player is unchanged.
+    if (!DIFM_SUPPORTED) return;
+    let listenKey;
+    try {
+      listenKey = localStorage.getItem(DIFM_KEY) || "";
+    } catch {
+      return; // localStorage unavailable — treat as no key
+    }
+    if (!DIFM_KEY_RE.test(listenKey)) return; // no/invalid key — unchanged behavior
+
+    try {
+      const res = await fetch("channels_difm.json", { cache: "no-cache" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const region = typeof data.region === "string" ? data.region : "DI.FM";
+      const bitrate = Number.isFinite(data.bitrate) ? data.bitrate : 320; // Ultra MP3
+      const list = Array.isArray(data.channels) ? data.channels : [];
+      const difm = [];
+      for (const c of list) {
+        if (!c || typeof c.key !== "string" || typeof c.name !== "string") continue;
+        difm.push({
+          region,
+          name: c.name,
+          // "_hi" mount = 320 kbit/s MP3 (Ultra); listen key is the query
+          // string. Hosts are prem1/prem2/prem4.di.fm (per DI.FM's own
+          // premium_high .pls); they serve HTTP only — no TLS listener on
+          // any port, no cert in CT logs, and every DI.FM API returns only
+          // http:// URLs (verified 2026-06). Keep this http://prem1 URL;
+          // an https:// variant cannot exist, and a page served over HTTPS
+          // will block these as mixed content (see DIFM_SUPPORTED). The
+          // key is validated hex, so it's safe to append directly.
+          url: `http://prem1.di.fm/${c.key}_hi?${listenKey}`,
+          bitrate,
+          cors: false, // DI.FM streams are CORS-opaque — use the plain element
+        });
+      }
+      channels = channels.concat(difm);
+    } catch (err) {
+      console.warn("Failed to load channels_difm.json; continuing without DI.FM", err);
+    }
+  }
+
   async function init() {
     wireEvents();
+    wireSettings();
     initVuMeter();
     try {
       const res = await fetch("channels.json", { cache: "no-cache" });
@@ -588,6 +763,11 @@
       channels = data.filter(
         (c) => c && typeof c.name === "string" && typeof c.url === "string"
       );
+      // If (and only if) a valid DI.FM listen key is saved, append the DI.FM
+      // channels after the base channels. Without a valid key, behavior is
+      // unchanged: no fetch, no mutation of the channels array, no timing
+      // difference. A failed fetch/parse leaves the base player fully working.
+      await appendDifmChannels();
       currentIndex = loadIndex(channels.length);
       renderChannel();
       setStatus("paused");

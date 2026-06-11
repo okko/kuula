@@ -295,6 +295,36 @@ to "simplify":
 - **`localStorage` index clamp.** If the channel list shrinks (e.g. a
   station is removed), a saved `currentIndex` past the new end would crash
   the lookup — `loadIndex(maxLen)` clamps to `0..maxLen-1`.
+- **DI.FM is HTTP-only — do not "fix" the stream URL to HTTPS.** When a
+  valid DI.FM listen key is saved in Settings (localStorage
+  `kuula.difmListenKey`, validated `>10` lowercase-hex chars), the player
+  appends every DI.FM channel from the static `htdocs/channels_difm.json`
+  (refreshed by `tools/fetch-difm-channels.sh`, never fetched at runtime),
+  building each Ultra 320 kbit/s MP3 URL as
+  `http://prem1.di.fm/<key>_hi?<listenKey>` and marking it `"cors": false`.
+  The URL is **`http://` on purpose**: DI.FM's listen-key stream servers
+  (`prem1`/`prem2`/`prem4.di.fm`) are plain Icecast with **no TLS on any
+  port** — there is no HTTPS listen-key endpoint anywhere in DI.FM's or
+  the wider AudioAddict network's infrastructure (RadioTunes, JazzRadio,
+  RockRadio, ClassicalRadio, ZenRadio share the same servers). Verified
+  2026-06, so don't re-research this:
+  - `prem1/2/4.di.fm:443` and `:8443` refuse connections outright, as do
+    all `pub1`–`pub8.di.fm` hosts and `prem*.radiotunes.com`.
+  - Certificate Transparency logs (`crt.sh`) show **no certificate ever
+    issued** for any `prem*`/`pub*`/stream hostname under `di.fm` or
+    `audioaddict.com`.
+  - Every official API returns only `http://` stream URLs: the
+    `premium_high` `.pls`, the `https://listen.di.fm/premium_high/<key>`
+    JSON, and the mobile apps' `api.audioaddict.com/v1/di/mobile/batch_update`.
+  - DI.FM's own HTTPS web player sidesteps the problem by not using
+    Icecast at all — it plays session-signed per-track files over HTTPS.
+  Consequence: DI.FM channels play on an **HTTP origin only**
+  (`http://localhost`, an HTTP deploy); on an **HTTPS deploy** the browser
+  blocks them as mixed content and they silently fail, while every other
+  channel keeps working. The only HTTPS audio DI.FM serves is the web
+  player's session-signed, per-track files on `content.audioaddict.com`,
+  which require an account login (not the listen key) and track-by-track
+  orchestration — out of scope for this listen-key, no-backend app.
 - **Why no playlist UI / favorites / search?** Out of scope by design.
   Two buttons, retro aesthetic, that's the product. Don't add features the
   user didn't ask for.

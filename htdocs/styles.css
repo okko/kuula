@@ -97,29 +97,31 @@ body::before {
 
 .channel-indicators {
   display: flex;
-  flex-wrap: nowrap;
-  gap: 2px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  column-gap: 8px; /* gap between region groups */
+  row-gap: 5px; /* gap between wrapped lines */
   width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+}
+
+/* Each region is one group that flows like a word: it stays intact and
+   wraps to the next line as a unit. A group too wide for the row (e.g. the
+   119 DI.FM channels) breaks across lines internally rather than spilling
+   past the panel's right edge. */
+.channel-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  min-width: 0; /* allow an oversized group to shrink and wrap internally */
 }
 
 .channel-indicator {
-  flex: 1 1 0;
-  min-width: 2px;
-  max-width: 8px;
+  flex: 0 0 auto;
+  width: 5px;
   height: 6px;
   background: var(--ink-faint);
   border-radius: 1px;
   transition: background 120ms ease, box-shadow 120ms ease;
-}
-
-.channel-indicator[data-group-start="true"] {
-  margin-left: 8px;
-}
-
-.channel-indicator[data-group-start="true"]:first-child {
-  margin-left: 0;
 }
 
 .channel-indicator.active {
@@ -374,6 +376,212 @@ body::before {
   color: var(--cyan);
   background: rgba(0, 240, 255, 0.06);
   outline: none;
+}
+
+/* Settings gear — sits left of the GitHub link, same unobtrusive treatment */
+.settings-link {
+  position: fixed;
+  bottom: calc(env(safe-area-inset-bottom) + 12px);
+  right: calc(env(safe-area-inset-right) + 52px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--ink-dim);
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 120ms ease, background 120ms ease;
+  z-index: 50;
+}
+
+.settings-link:hover,
+.settings-link:focus-visible {
+  color: var(--cyan);
+  background: rgba(0, 240, 255, 0.06);
+  outline: none;
+}
+
+.settings-link[hidden] {
+  display: none;
+}
+
+/* Settings overlay / modal */
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(10, 11, 13, 0.78);
+}
+
+.settings-overlay[hidden] {
+  display: none;
+}
+
+.settings-panel {
+  width: min(460px, 92vw);
+  border: 1px solid var(--cyan-soft);
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--panel-edge) 0%, var(--panel) 60%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.4),
+    0 0 24px var(--cyan-dim),
+    0 6px 24px rgba(0, 0, 0, 0.6);
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: var(--cyan);
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.settings-title {
+  font-family: inherit;
+  font-weight: normal;
+  font-size: clamp(1.6rem, 5vw, 2.1rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-shadow: 0 0 6px var(--cyan), 0 0 18px var(--cyan-dim);
+  line-height: 1;
+}
+
+.settings-close {
+  font-family: inherit;
+  font-size: 1.8rem;
+  line-height: 1;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--cyan-dim);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink-dim);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 120ms ease, border-color 120ms ease;
+  outline: none;
+}
+
+.settings-close:hover,
+.settings-close:focus-visible {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings-label {
+  font-size: clamp(1.1rem, 3.3vw, 1.4rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.settings-input {
+  font-family: inherit;
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+  padding: 8px 10px;
+  border: 1px solid var(--cyan-soft);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--cyan);
+  text-shadow: 0 0 6px var(--cyan-dim);
+  outline: none;
+}
+
+.settings-input:focus-visible {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 1px var(--cyan-soft), 0 0 12px var(--cyan-dim);
+}
+
+.settings-input[aria-invalid="true"] {
+  border-color: var(--error);
+  box-shadow: 0 0 0 1px rgba(255, 90, 90, 0.4);
+}
+
+.settings-help {
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim);
+  line-height: 1.3;
+}
+
+.settings-help a {
+  color: var(--cyan);
+  text-decoration: underline;
+}
+
+.settings-help a:hover,
+.settings-help a:focus-visible {
+  text-shadow: 0 0 8px var(--cyan-dim);
+  outline: none;
+}
+
+.settings-error {
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  color: var(--error);
+  text-shadow: 0 0 8px rgba(255, 90, 90, 0.4);
+}
+
+.settings-error[hidden] {
+  display: none;
+}
+
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.settings-btn {
+  font-family: inherit;
+  font-size: 1.3rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border: 1px solid var(--cyan-soft);
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--panel-edge) 0%, var(--panel) 60%);
+  color: var(--cyan);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 120ms ease, box-shadow 120ms ease, text-shadow 120ms ease;
+  outline: none;
+}
+
+.settings-btn:hover,
+.settings-btn:focus-visible {
+  border-color: var(--cyan);
+  text-shadow: 0 0 10px var(--cyan), 0 0 24px var(--cyan-soft);
+  box-shadow: 0 0 14px var(--cyan-dim);
+}
+
+.settings-btn-primary {
+  text-shadow: 0 0 6px var(--cyan-dim);
 }
 
 @media (orientation: landscape) and (max-height: 520px) {

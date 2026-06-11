@@ -1,0 +1,483 @@
+{
+  "_comment": "DI.FM channel directory, fetched from https://api.audioaddict.com/v1/di/channels by tools/fetch-difm-channels.sh . The player builds each Ultra (320 kbit/s MP3) stream URL as http://prem1.di.fm/{key}_hi?{listenKey} (HTTP-only premium hosts prem1/prem2/prem4.di.fm) using the listen key from Settings (localStorage kuula.difmListenKey). These streams are CORS-opaque, so they play via the plain audio element. Re-run the tool to refresh.",
+  "region": "DI.FM",
+  "bitrate": 320,
+  "channels": [
+    {
+      "key": "00sclubhits",
+      "name": "00s Club Hits"
+    },
+    {
+      "key": "afrohouse",
+      "name": "Afro House"
+    },
+    {
+      "key": "ambient",
+      "name": "Ambient"
+    },
+    {
+      "key": "atmosphericbreaks",
+      "name": "Atmospheric Breaks"
+    },
+    {
+      "key": "bassnjackinhouse",
+      "name": "Bass & Jackin' House"
+    },
+    {
+      "key": "bassline",
+      "name": "Bassline"
+    },
+    {
+      "key": "bigbeat",
+      "name": "Big Beat"
+    },
+    {
+      "key": "bigroomhouse",
+      "name": "Big Room House"
+    },
+    {
+      "key": "breaks",
+      "name": "Breaks"
+    },
+    {
+      "key": "chillntropicalhouse",
+      "name": "Chill & Tropical House"
+    },
+    {
+      "key": "chilledm",
+      "name": "Chill EDM"
+    },
+    {
+      "key": "chillhop",
+      "name": "ChillHop"
+    },
+    {
+      "key": "chillout",
+      "name": "Chillout"
+    },
+    {
+      "key": "chilloutdreams",
+      "name": "Chillout Dreams"
+    },
+    {
+      "key": "chillstep",
+      "name": "Chillstep"
+    },
+    {
+      "key": "classiceurodance",
+      "name": "Classic EuroDance"
+    },
+    {
+      "key": "classiceurodisco",
+      "name": "Classic EuroDisco"
+    },
+    {
+      "key": "classictrance",
+      "name": "Classic Trance"
+    },
+    {
+      "key": "classicvocaltrance",
+      "name": "Classic Vocal Trance"
+    },
+    {
+      "key": "clubdubstep",
+      "name": "Club Dubstep"
+    },
+    {
+      "key": "russianclubhits",
+      "name": "Club Hits (Slavic)"
+    },
+    {
+      "key": "club",
+      "name": "Club Sounds"
+    },
+    {
+      "key": "darkdnb",
+      "name": "Dark DnB"
+    },
+    {
+      "key": "darkpsytrance",
+      "name": "Dark PsyTrance"
+    },
+    {
+      "key": "deephouse",
+      "name": "Deep House"
+    },
+    {
+      "key": "deepnudisco",
+      "name": "Deep Nu-Disco"
+    },
+    {
+      "key": "deeporganichouse",
+      "name": "Deep Organic House"
+    },
+    {
+      "key": "deepprogressivehouse",
+      "name": "Deep Progressive House"
+    },
+    {
+      "key": "deepprogressivetrance",
+      "name": "Deep Progressive Trance"
+    },
+    {
+      "key": "deeptech",
+      "name": "Deep Tech"
+    },
+    {
+      "key": "detroithousentechno",
+      "name": "Detroit House & Techno"
+    },
+    {
+      "key": "discohouse",
+      "name": "Disco House"
+    },
+    {
+      "key": "djmixes",
+      "name": "DJ Mixes"
+    },
+    {
+      "key": "downtempolounge",
+      "name": "Downtempo Lounge"
+    },
+    {
+      "key": "drumandbass",
+      "name": "Drum and Bass"
+    },
+    {
+      "key": "drumstep",
+      "name": "Drumstep"
+    },
+    {
+      "key": "dub",
+      "name": "Dub"
+    },
+    {
+      "key": "dubtechno",
+      "name": "Dub Techno"
+    },
+    {
+      "key": "dubstep",
+      "name": "Dubstep"
+    },
+    {
+      "key": "edmfestival",
+      "name": "EDM Festival"
+    },
+    {
+      "key": "edm",
+      "name": "EDM Hits"
+    },
+    {
+      "key": "electro",
+      "name": "Electro House"
+    },
+    {
+      "key": "electroswing",
+      "name": "Electro Swing"
+    },
+    {
+      "key": "electronicpioneers",
+      "name": "Electronic Pioneers"
+    },
+    {
+      "key": "electropop",
+      "name": "Electropop"
+    },
+    {
+      "key": "epictrance",
+      "name": "Epic Trance"
+    },
+    {
+      "key": "eurodance",
+      "name": "EuroDance"
+    },
+    {
+      "key": "funkyhouse",
+      "name": "Funky House"
+    },
+    {
+      "key": "futurebass",
+      "name": "Future Bass"
+    },
+    {
+      "key": "futuregarage",
+      "name": "Future Garage"
+    },
+    {
+      "key": "futuresynthpop",
+      "name": "Future Synthpop"
+    },
+    {
+      "key": "gabber",
+      "name": "Gabber"
+    },
+    {
+      "key": "glitchhop",
+      "name": "Glitch Hop"
+    },
+    {
+      "key": "goapsy",
+      "name": "Goa-Psy Trance"
+    },
+    {
+      "key": "handsup",
+      "name": "Hands Up"
+    },
+    {
+      "key": "harddance",
+      "name": "Hard Dance"
+    },
+    {
+      "key": "hardtechno",
+      "name": "Hard Techno"
+    },
+    {
+      "key": "hardcore",
+      "name": "Hardcore"
+    },
+    {
+      "key": "hardstyle",
+      "name": "Hardstyle"
+    },
+    {
+      "key": "house",
+      "name": "House"
+    },
+    {
+      "key": "iconycradio",
+      "name": "ICONYC Radio"
+    },
+    {
+      "key": "indiebeats",
+      "name": "Indie Beats"
+    },
+    {
+      "key": "indiedance",
+      "name": "Indie Dance"
+    },
+    {
+      "key": "jazzhouse",
+      "name": "Jazz House"
+    },
+    {
+      "key": "jungle",
+      "name": "Jungle"
+    },
+    {
+      "key": "latinhouse",
+      "name": "Latin House"
+    },
+    {
+      "key": "liquiddnb",
+      "name": "Liquid DnB"
+    },
+    {
+      "key": "liquiddubstep",
+      "name": "Liquid Dubstep"
+    },
+    {
+      "key": "liquidtrap",
+      "name": "Liquid Trap"
+    },
+    {
+      "key": "lofihiphop",
+      "name": "LoFi Hip-Hop"
+    },
+    {
+      "key": "lofiloungenchill",
+      "name": "LoFi Lounge & Chill"
+    },
+    {
+      "key": "lounge",
+      "name": "Lounge"
+    },
+    {
+      "key": "melodicprogressive",
+      "name": "Melodic Progressive"
+    },
+    {
+      "key": "minimal",
+      "name": "Minimal"
+    },
+    {
+      "key": "nightcore",
+      "name": "Nightcore"
+    },
+    {
+      "key": "nudisco",
+      "name": "Nu Disco"
+    },
+    {
+      "key": "oldschoolacid",
+      "name": "Oldschool Acid"
+    },
+    {
+      "key": "oldschoolhouse",
+      "name": "Oldschool House"
+    },
+    {
+      "key": "oldschoolrave",
+      "name": "Oldschool Rave"
+    },
+    {
+      "key": "classictechno",
+      "name": "Oldschool Techno & Trance"
+    },
+    {
+      "key": "progressive",
+      "name": "Progressive"
+    },
+    {
+      "key": "progressivepsy",
+      "name": "Progressive Psy"
+    },
+    {
+      "key": "psybient",
+      "name": "Psybient"
+    },
+    {
+      "key": "psychill",
+      "name": "PsyChill"
+    },
+    {
+      "key": "psydub",
+      "name": "PsyDub"
+    },
+    {
+      "key": "slaphouse",
+      "name": "Slap House"
+    },
+    {
+      "key": "soulfulhouse",
+      "name": "Soulful House"
+    },
+    {
+      "key": "spacemusic",
+      "name": "Space Dreams"
+    },
+    {
+      "key": "summerchillhouse",
+      "name": "Summer Chill House"
+    },
+    {
+      "key": "synthwave",
+      "name": "Synthwave"
+    },
+    {
+      "key": "techhouse",
+      "name": "Tech House"
+    },
+    {
+      "key": "techno",
+      "name": "Techno"
+    },
+    {
+      "key": "trance",
+      "name": "Trance"
+    },
+    {
+      "key": "trap",
+      "name": "Trap"
+    },
+    {
+      "key": "tribalhouse",
+      "name": "Tribal House"
+    },
+    {
+      "key": "umfradio",
+      "name": "UMF Radio"
+    },
+    {
+      "key": "undergroundtechno",
+      "name": "Underground Techno"
+    },
+    {
+      "key": "vocalchillout",
+      "name": "Vocal Chillout"
+    },
+    {
+      "key": "vocalhouse",
+      "name": "Vocal House"
+    },
+    {
+      "key": "vocallounge",
+      "name": "Vocal Lounge"
+    },
+    {
+      "key": "vocaltrance",
+      "name": "Vocal Trance"
+    },
+    {
+      "key": "chiptunes",
+      "name": "XChiptunes"
+    },
+    {
+      "key": "cosmicdowntempo",
+      "name": "XCosmic Downtempo"
+    },
+    {
+      "key": "ebm",
+      "name": "XEBM"
+    },
+    {
+      "key": "eclectronica",
+      "name": "XEcLectronica"
+    },
+    {
+      "key": "electronics",
+      "name": "XElectronics"
+    },
+    {
+      "key": "exposurenyc",
+      "name": "XExposure NYC"
+    },
+    {
+      "key": "futurebeats",
+      "name": "XFuture Beats"
+    },
+    {
+      "key": "futurevocalloungebeats",
+      "name": "XFuture Vocal Lounge Beats"
+    },
+    {
+      "key": "idm",
+      "name": "XIDM"
+    },
+    {
+      "key": "moombahton",
+      "name": "XMoombahton"
+    },
+    {
+      "key": "sankeys",
+      "name": "XSankeys Radio"
+    },
+    {
+      "key": "scousehouse",
+      "name": "XScouse House"
+    },
+    {
+      "key": "ukgarage",
+      "name": "XUK Garage"
+    },
+    {
+      "key": "umf_stage1",
+      "name": "XUMF Stage 1"
+    },
+    {
+      "key": "umf_stage2",
+      "name": "XUMF Stage 2"
+    },
+    {
+      "key": "umf_stage3",
+      "name": "XUMF Stage 3"
+    },
+    {
+      "key": "umf_stage4",
+      "name": "XUMF Stage 4"
+    },
+    {
+      "key": "umf_stage5",
+      "name": "XUMF Stage 5"
+    }
+  ]
+}
