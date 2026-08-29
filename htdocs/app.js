@@ -4,6 +4,13 @@
   const DIFM_KEY = "kuula.difmListenKey";
   // Valid: strictly more than 10 lowercase hex chars (i.e. at least 11).
   const DIFM_KEY_RE = /^[0-9a-f]{11,}$/;
+  // Safari's MediaElementAudioSourceNode returns silence for HLS/live streams
+  // on iOS (WebKit bug 180696). Keep native playback there until it is fixed;
+  // flipping this flag restores real metering without changing detection code.
+  const ENABLE_WEB_AUDIO_ON_IOS = false;
+  const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const WEB_AUDIO_ENABLED = !IS_IOS || ENABLE_WEB_AUDIO_ON_IOS;
   // DI.FM's listen-key streams are HTTP-only and get blocked as mixed content
   // when this page is served over HTTPS, so DI.FM is unusable there. On an
   // HTTPS origin we hide Settings entirely and ignore any saved listen key.
@@ -172,7 +179,7 @@
     // is determined by manual testing (see channels.json / AGENTS.md), not
     // probed at runtime — a server that drops CORS will go silent on its
     // metered channel until its flag is flipped.
-    audio = ch.cors === false ? audioPlain : audioWA;
+    audio = WEB_AUDIO_ENABLED && ch.cors !== false ? audioWA : audioPlain;
     audioWA.pause();
     audioPlain.pause();
     audio.src = url;
@@ -411,6 +418,7 @@
   let webAudioBroken = false;
 
   function ensureAudioGraph() {
+    if (!WEB_AUDIO_ENABLED) return false;
     if (webAudioReady || webAudioBroken) return webAudioReady;
     const AC = window.AudioContext || window.webkitAudioContext;
     if (!AC) { webAudioBroken = true; return false; }
@@ -691,6 +699,11 @@
   }
 
   function initVuMeter() {
+    if (!WEB_AUDIO_ENABLED) {
+      vuMode = "off";
+      vuEl.hidden = true;
+      return;
+    }
     const cs = getComputedStyle(document.documentElement);
     cyanColor = (cs.getPropertyValue("--cyan") || "#00f0ff").trim();
     cyanDimColor = (cs.getPropertyValue("--cyan-dim") || cyanDimColor).trim();

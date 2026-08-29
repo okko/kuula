@@ -130,9 +130,13 @@ switch to. See [`AGENTS.md`](AGENTS.md) for the verification details.
 
 ## Browser support
 
-Targets desktop Chrome and Safari on iOS. Audio playback uses a single plain
-`<audio>` element — both browsers handle HLS in `<audio>` natively as of 2024
-(no hls.js needed), as well as all standard icecast/shoutcast formats.
+Targets desktop Chrome and Safari on iOS. Both browsers handle HLS in `<audio>`
+natively as of 2024 (no hls.js needed), as well as all standard
+icecast/shoutcast formats. Desktop browsers use Web Audio for VU metering when
+the stream permits it. iOS always uses native `<audio>` playback and hides the
+VU control because Safari does not provide reliable Web Audio samples for
+HLS/live streams; this also bypasses the Web Audio route implicated in the
+reported CarPlay instability.
 
 First play must come from a user gesture (tap or click) — that's an iOS Safari
 autoplay constraint. The display panel itself is the play/pause control.
