@@ -122,7 +122,7 @@ In rough order of effort:
    - Bauer / radioplay.fi: `https://streaming.radioplay.fi/<slug>/<slug>_128.mp3`
    - ERR icecast: `https://icecast.err.ee/<station>.mp3` — full list at
      `https://icecast.live.yle.fi/status.xsl` style endpoints if available
-   - Yle Areena highest bitrate: `https://yleradiolive.akamaized.net/hls/live/<id>/in-<Name>/256/variant.m3u8`
+   - Yle Areena highest bitrate: `https://yleradiolive5.akamaized.net/hls/live/<id>/<slug>/256/variant.m3u8`
      (always pin the explicit `/256/variant.m3u8` — `master.m3u8` is adaptive
      and may pick a lower variant)
    - Leviracloud (Estonia, TV3): `https://ice.leviracloud.eu/<slug>128-aac`
