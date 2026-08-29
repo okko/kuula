@@ -22,9 +22,16 @@ If you're tempted to add npm, a bundler, TypeScript, or a framework, the
 answer is almost always no — this is a 200-line app with a JSON config, and
 the lack of tooling is the feature. The user explicitly chose this.
 
-## Channels (`htdocs/channels.json`)
+## Channels (`htdocs/channels.json` + per-region files)
 
-The URLs in `channels.json` are **public broadcast endpoints** that
+The base channel list lives in `htdocs/channels.json`; additional regions
+live in their own files with the same schema (currently
+`htdocs/channels_fr.json`). `app.js` concatenates the files listed in
+`CHANNEL_FILES` in order — the first (`channels.json`) is required and a
+failure there shows CONFIG ERROR, while the rest degrade gracefully (logged
+and skipped). When adding a new region file, append it to `CHANNEL_FILES`.
+
+The URLs in these files are **public broadcast endpoints** that
 broadcasters publish for direct playback. This app plays them in-place
 via the user's browser — it does not re-host, proxy, transcode, strip
 ads, or redistribute the audio. The connection is the same one the
@@ -73,11 +80,12 @@ Schema for each entry:
   header". If a server changes its policy, flip this flag — there is no runtime
   auto-detection.
 
-Order matters: channels are cycled with left/right arrows in array order.
-Keep regional groups together (all `FI HEL` first, then `EE`, …) so cycling
-within a region is easy. Current order in the repo: `FI HEL` first, then
-`EE`. Within each region, follow the sort order documented in
-[README.md § Channel sort order](README.md#channel-sort-order).
+Order matters: channels are cycled with left/right arrows in array order
+(files concatenate in `CHANNEL_FILES` order). Keep regional groups together
+(all `FI HEL` first, then `EE`, …) so cycling within a region is easy.
+Current order in the repo: `FI HEL` then `EE` (channels.json), then `FR` and
+`FR MED` (channels_fr.json). Within each region, follow the sort order
+documented in [README.md § Channel sort order](README.md#channel-sort-order).
 
 ## Finding a stream URL
 
@@ -228,6 +236,20 @@ these:
   HLS URLs) the stream URL was read from the browser's network log while
   playing the station on the broadcaster's own web player — i.e. the same
   URL the broadcaster serves to anyone using the official site.
+
+- **France (`FR`, `FR MED` in `htdocs/channels_fr.json`)** — the station
+  list was curated from radioplayer.fr (NRJ, Kiss FM, and Mediterranean
+  stations the user picked), and the stream URLs come from the French
+  Radioplayer API at `api.radioplayer.fr/v2`, which the radioplayer.fr
+  website itself calls with HTTP Basic credentials published in its public JS
+  bundle (`static/js/main.*.js`) — unlike `api.radioplayer.org` above, the
+  key is public, so using it is equivalent to using the official web player.
+  `tools/fetch-fr-channels.sh` holds the curated station table (rpIDs) and
+  regenerates the file: it keeps only HTTPS streams, prefers icecast over
+  HLS, strips the ad-insertion template query params
+  (`aw_0_1st.rpfr=~REQUEST_PREROLL~` etc. — streams play fine without them),
+  and probes the real bitrate (the API's bitrate field is unreliable — e.g.
+  it reports Kiss FM as 128 while the icy header says 192).
 
 When adding more regions/countries, prefer this rough order:
 
