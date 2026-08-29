@@ -64,7 +64,9 @@ Schema for each entry:
   whose server does **not** grant CORS to this origin. CORS-clean channels play
   through a Web-Audio-wired `<audio>` element so the VU meter can read real L/R
   levels; `"cors": false` channels play through a **separate plain element**
-  (never wired to Web Audio) so they stay audible, with a simulated meter.
+  (never wired to Web Audio) so they stay audible, with a simulated meter. On
+  iOS, all channels use the plain element and the VU control is hidden; see the
+  iOS exception under "App behavior".
   This matters because once an element is wired to Web Audio it is permanently
   routed through the graph, which outputs **silence** for any CORS-opaque
   (tainted) media — so a `cors:true` stream that the browser can't actually
@@ -172,7 +174,8 @@ Things that look load-bearing and are:
   (`crossorigin="anonymous"`, set once) and plays CORS-clean channels for real
   metering; `#audio-plain` is never wired and plays `"cors": false` channels so
   they stay audible (with a simulated meter). `tuneTo()` selects the element by
-  the channel's `cors` flag, pauses the other, and updates the `audio` pointer.
+  platform support and the channel's `cors` flag, pauses the other, and updates
+  the `audio` pointer.
   This split is required because `createMediaElementSource` permanently routes
   its element through the graph, which silences CORS-opaque media — a single
   shared element would mute every `cors:false` stream. See the `cors` field
@@ -183,9 +186,16 @@ Things that look load-bearing and are:
 - **`localStorage` persistence of `currentIndex`** (`kuula.channelIndex`) —
   clamp to range on load in case channels.json shrank. The VU meter mode
   (`kuula.vuMode`: `off`/`led`/`needle`) is persisted under its own key.
-- **Web Audio graph built once, from a user gesture.** `AudioContext` +
+- **Web Audio is disabled on iOS.** Safari exposes the APIs, but WebKit bug
+  180696 makes `MediaElementAudioSourceNode` return silence for HLS/live streams,
+  and that routing path is the leading suspect for unstable CarPlay playback.
+  All iOS channels therefore use `#audio-plain`, no `AudioContext` is created,
+  and the VU control is hidden. `ENABLE_WEB_AUDIO_ON_IOS` is the single switch to
+  revisit after WebKit fixes the streaming and route-change issues. Detection
+  includes iPadOS desktop mode (`MacIntel` with touch points).
+- **Web Audio graph built once, from a user gesture on supported platforms.** `AudioContext` +
   `createMediaElementSource(#audio)` are created lazily inside `togglePlay`/
-  `step` (iOS needs a gesture to start/resume the context).
+  `step`.
   `createMediaElementSource` may be called **only once per element**, captures
   only the dedicated `#audio` element (never `#audio-plain`), and the source
   **must** `connect(audioCtx.destination)` or routing through Web Audio silences
@@ -293,7 +303,10 @@ to "simplify":
   Audio silences every CORS-opaque stream (the graph outputs zeros for tainted
   media). So there are two elements: `#audio` (Web-Audio-wired, CORS-clean
   channels, real meter) and `#audio-plain` (everything `"cors": false`, audible,
-  simulated meter). CORS support is tracked **manually** per channel — `curl`
+  simulated meter). iOS is an explicit exception: every channel uses
+  `#audio-plain` and the meter is hidden because WebKit does not expose usable
+  samples for HLS/live streams; this also bypasses the Web Audio route suspected
+  in CarPlay instability. CORS support is tracked **manually** per channel — `curl`
   can't tell, because servers reflect `Origin` even when the browser blocks the
   fetch (e.g. the Bauer `stream-redirect` 302, where every redirect hop must
   pass CORS). Known no-CORS: the four `icecast.err.ee` streams and all 13

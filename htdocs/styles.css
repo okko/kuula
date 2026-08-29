@@ -211,6 +211,10 @@ body::before {
   touch-action: manipulation;
 }
 
+.vu[hidden] {
+  display: none;
+}
+
 .vu:focus-visible {
   box-shadow: 0 0 0 1px var(--cyan-soft), 0 0 10px var(--cyan-dim);
 }
