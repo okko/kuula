@@ -1,0 +1,56 @@
+[
+  {
+    "region": "FR",
+    "name": "NRJ",
+    "url": "https://streaming.nrjaudio.fm/oufdfatx4thg",
+    "bitrate": 128
+  },
+  {
+    "region": "FR MED",
+    "name": "Kiss FM",
+    "url": "https://kissfm.ice.infomaniak.ch/kissfm-128.mp3",
+    "bitrate": 192
+  },
+  {
+    "region": "FR MED",
+    "name": "Maritima",
+    "url": "https://maritima1072.ice.infomaniak.ch/maritima1072-128.mp3",
+    "bitrate": 128
+  },
+  {
+    "region": "FR MED",
+    "name": "Radio Star",
+    "url": "https://stream.rcs.revma.com/b4yrpwdu7ucwv",
+    "bitrate": 128
+  },
+  {
+    "region": "FR MED",
+    "name": "Mistral FM",
+    "url": "https://stream.rcs.revma.com/8qmbm350bxcwv",
+    "bitrate": 128
+  },
+  {
+    "region": "FR MED",
+    "name": "Melody d'Azur",
+    "url": "https://stream.rcs.revma.com/4ty9verpuf9uv",
+    "bitrate": 64
+  },
+  {
+    "region": "FR MED",
+    "name": "ici Azur",
+    "url": "https://icecast.radiofrance.fr/fbazur-midfi.mp3",
+    "bitrate": 128
+  },
+  {
+    "region": "FR MED",
+    "name": "ici Provence",
+    "url": "https://icecast.radiofrance.fr/fbprovence-midfi.mp3",
+    "bitrate": 128
+  },
+  {
+    "region": "FR MED",
+    "name": "Radio Monaco",
+    "url": "https://streamingp.shoutcast.com/radio-monaco",
+    "bitrate": 192
+  }
+]

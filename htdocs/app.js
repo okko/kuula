@@ -747,22 +747,43 @@
     }
   }
 
+  // Base channel files, concatenated in this order. The first file is
+  // required — if it fails the player shows CONFIG ERROR — while the
+  // per-region files after it degrade gracefully: a missing or broken one
+  // is logged and skipped so the player keeps working with the rest.
+  const CHANNEL_FILES = ["channels.json", "channels_fr.json"];
+
+  async function fetchChannelFile(file) {
+    const res = await fetch(file, { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!Array.isArray(data)) return [];
+    return data.filter(
+      (c) => c && typeof c.name === "string" && typeof c.url === "string"
+    );
+  }
+
   async function init() {
     wireEvents();
     wireSettings();
     initVuMeter();
     try {
-      const res = await fetch("channels.json", { cache: "no-cache" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      if (!Array.isArray(data) || data.length === 0) {
+      const [base, ...extra] = await Promise.all(
+        CHANNEL_FILES.map((file, i) =>
+          i === 0
+            ? fetchChannelFile(file)
+            : fetchChannelFile(file).catch((err) => {
+                console.warn(`Failed to load ${file}; continuing without it`, err);
+                return [];
+              })
+        )
+      );
+      if (base.length === 0) {
         channels = [];
         renderChannel();
         return;
       }
-      channels = data.filter(
-        (c) => c && typeof c.name === "string" && typeof c.url === "string"
-      );
+      channels = base.concat(...extra);
       // If (and only if) a valid DI.FM listen key is saved, append the DI.FM
       // channels after the base channels. Without a valid key, behavior is
       // unchanged: no fetch, no mutation of the channels array, no timing
