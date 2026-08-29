@@ -8,37 +8,37 @@
   {
     "region": "FI HEL",
     "name": "Yle Klassinen",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027676/in-YleKlassinen/256/variant.m3u8",
+    "url": "https://yleradiolive5.akamaized.net/hls/live/20000872/yleklassinen/256/variant.m3u8",
     "bitrate": 256
   },
   {
     "region": "FI HEL",
     "name": "Yle Radio 1",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027672/in-YleRadio1/256/variant.m3u8",
+    "url": "https://yleradiolive5.akamaized.net/hls/live/20000869/yleradio1/256/variant.m3u8",
     "bitrate": 256
   },
   {
     "region": "FI HEL",
     "name": "Yle Radio Suomi Helsinki",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027675/in-YleRS/256/variant.m3u8",
+    "url": "https://yleradiolive5.akamaized.net/hls/live/20000871/ylers/256/variant.m3u8",
     "bitrate": 256
   },
   {
     "region": "FI HEL",
     "name": "Yle Vega",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027679/in-YleVega/256/variant.m3u8",
+    "url": "https://yleradiolive5.akamaized.net/hls/live/20000878/ylevega/256/variant.m3u8",
     "bitrate": 256
   },
   {
     "region": "FI HEL",
     "name": "Yle X3M",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027678/in-YleX3M/256/variant.m3u8",
+    "url": "https://yleradiolive5.akamaized.net/hls/live/20000877/ylex3m/256/variant.m3u8",
     "bitrate": 256
   },
   {
     "region": "FI HEL",
     "name": "YleX",
-    "url": "https://yleradiolive.akamaized.net/hls/live/2027674/in-YleX/256/variant.m3u8",
+    "url": "https://yleradiolive5.akamaized.net/hls/live/20000870/ylex/256/variant.m3u8",
     "bitrate": 256
   },
   {
@@ -113,7 +113,7 @@
     "region": "FI HEL",
     "name": "Järviradio",
     "url": "https://jarviradio.radiotaajuus.fi:9000/jr",
-    "bitrate": 128
+    "bitrate": 192
   },
   {
     "region": "FI HEL",
@@ -171,7 +171,7 @@
     "region": "FI HEL",
     "name": "Radio Dei",
     "url": "https://stream.dei.fi/radioplayer/helsinki",
-    "bitrate": 128
+    "bitrate": 256
   },
   {
     "region": "FI HEL",
@@ -240,13 +240,13 @@
     "region": "FI HEL",
     "name": "RadioSE",
     "url": "https://wr2.downtime.fi/kaakko.aac",
-    "bitrate": 128
+    "bitrate": 96
   },
   {
     "region": "FI HEL",
     "name": "Roll FM",
     "url": "https://rollfm.online/",
-    "bitrate": 128
+    "bitrate": 192
   },
   {
     "region": "FI HEL",
@@ -304,7 +304,7 @@
     "region": "EE",
     "name": "Duo Hitmix",
     "url": "https://router.euddn.net/8103046e16b71d15d692b57c187875c7/DHM_hitmix.aac",
-    "bitrate": 128
+    "bitrate": 192
   },
   {
     "region": "EE",
