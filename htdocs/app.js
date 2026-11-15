@@ -142,7 +142,7 @@
     const ch = channels[currentIndex];
     regionEl.textContent = ch.region || "";
     bitrateEl.textContent = ch.bitrate != null ? String(ch.bitrate) : "";
-    channelNameEl.textContent = ch.name;
+    channelNameEl.innerHTML = ch.name.replace("\n", "<br />");
     renderIndicators();
   }
 
