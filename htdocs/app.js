@@ -771,7 +771,7 @@
   // required — if it fails the player shows CONFIG ERROR — while the
   // per-region files after it degrade gracefully: a missing or broken one
   // is logged and skipped so the player keeps working with the rest.
-  const CHANNEL_FILES = ["channels.json", "channels_fr.json"];
+  const CHANNEL_FILES = ["channels.json", "channels_fr.json", "channels_xmas.json"];
 
   async function fetchChannelFile(file) {
     const res = await fetch(file, { cache: "no-cache" });
