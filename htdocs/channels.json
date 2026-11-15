@@ -277,6 +277,13 @@
     "cors": false
   },
   {
+    "region": "FI LAHTI",
+    "name": "Radio Voima",
+    "url": "https://radio.diks.fi/voima.mp3",
+    "bitrate": 128,
+    "cors": false
+  },
+  {
     "region": "EE",
     "name": "BIGfm",
     "url": "https://sc2.flamebox.org/bigfm-hd",
