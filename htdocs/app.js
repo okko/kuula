@@ -80,7 +80,7 @@
 
   const STATUS = {
     paused:   { text: "◼ PAUSED",      state: "paused",  titleLabel: "Paused"  },
-    loading:  { text: "⋯ TUNING",      state: "loading", titleLabel: "Tuning"  },
+    loading:  { text: "⋯ TUNING",      state: "loading", titleLabel: "⋯ Tuning"  },
     playing:  { text: "▸ NOW PLAYING", state: "playing", titleLabel: null      },
     error:    { text: "⚠ OFFLINE",     state: "error",   titleLabel: "Offline" },
     empty:    { text: "— NO CHANNELS —", state: "error", titleLabel: null     },
@@ -95,10 +95,17 @@
       document.title = DEFAULT_TITLE;
       return;
     }
+    if (kind === "loading") {
+      document.title = `${STATUS.loading.titleLabel} - ${TITLE_BASE}`;
+      return;
+    }
+    if (kind === "playing" && channels[currentIndex]) {
+      const channelName = channels[currentIndex].name.replace("\n", " ");
+      document.title = `${channelName} - ${TITLE_BASE}`;
+      return;
+    }
     const s = STATUS[kind];
-    const middle = (kind === "playing" && channels[currentIndex])
-      ? channels[currentIndex].name
-      : (s && s.titleLabel) || "Paused";
+    const middle = (s && s.titleLabel) || "Paused";
     document.title = `${TITLE_BASE} (${channels.length} channels) - ${middle} - ${TITLE_SUFFIX}`;
   }
 
